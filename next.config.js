@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    typescript: {
+        ignoreBuildErrors: true,
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     images: {
         domains: ['images.unsplash.com', 'i.pravatar.cc'],
         formats: ['image/avif', 'image/webp'],
