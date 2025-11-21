@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Codex - Question Everything. Dive Deeper.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-eye"></i>
+                    <span>THE CODEX</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pillars">Explore</a></li>
+                    <li><a href="#tribe">Join Tribe</a></li>
+                    <li><a href="#" class="btn-member">Become Member</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="code-rain"></div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-figure">
+                    <svg class="hooded-figure" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Hooded figure silhouette -->
+                        <defs>
+                            <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:0.8" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Hood -->
+                        <path d="M 200 50 Q 150 80 140 150 L 140 200 Q 140 250 160 280 L 200 350 L 240 280 Q 260 250 260 200 L 260 150 Q 250 80 200 50 Z" 
+                              fill="#0a0a0a" stroke="url(#neonGlow)" stroke-width="2" filter="url(#glow)"/>
+                        <!-- Face shadow -->
+                        <ellipse cx="200" cy="180" rx="40" ry="50" fill="#000000" opacity="0.9"/>
+                        <!-- Eyes glow -->
+                        <circle cx="185" cy="175" r="5" fill="#00ffff" filter="url(#glow)">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="215" cy="175" r="5" fill="#00ffff" filter="url(#glow)">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <!-- Body -->
+                        <path d="M 160 280 L 140 450 L 180 480 L 200 400 L 220 480 L 260 450 L 240 280 Z" 
+                              fill="#0a0a0a" stroke="url(#neonGlow)" stroke-width="1.5" opacity="0.8"/>
+                        <!-- Digital code particles -->
+                        <text x="100" y="150" font-family="monospace" font-size="12" fill="#00ffff" opacity="0.6">01001</text>
+                        <text x="280" y="200" font-family="monospace" font-size="10" fill="#ff00ff" opacity="0.5">11010</text>
+                        <text x="120" y="320" font-family="monospace" font-size="14" fill="#00ffff" opacity="0.7">10110</text>
+                        <text x="270" y="350" font-family="monospace" font-size="11" fill="#ff00ff" opacity="0.6">01101</text>
+                    </svg>
+                </div>
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="Question Everything">Question Everything</span>
+                </h1>
+                <p class="hero-tagline">Dive Deeper.</p>
+                <a href="#pillars" class="btn-hero">Explore the Unknown</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section class="pillars" id="pillars">
+        <div class="container">
+            <h2 class="section-title">Choose Your Path</h2>
+            <div class="pillars-grid">
+                <!-- Conspiracy Vault -->
+                <article class="pillar-card" data-aos="fade-up">
+                    <div class="card-image">
+                        <img src="images/conspiracy-vault.jpg" alt="Conspiracy Vault">
+                        <div class="card-overlay">
+                            <i class="fas fa-lock-open"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Conspiracy Vault</h3>
+                        <p class="card-excerpt">Uncover the hidden narratives behind world events. From classified documents to suppressed histories, we question the official story and follow the evidence wherever it leads.</p>
+                        <div class="card-meta">
+                            <span class="meta-item"><i class="far fa-clock"></i> 12 min read</span>
+                            <span class="meta-item"><i class="far fa-eye"></i> 2.4k views</span>
+                        </div>
+                        <a href="article.html?pillar=conspiracy" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Geek Science -->
+                <article class="pillar-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-image">
+                        <img src="images/geek-science.jpg" alt="Geek Science">
+                        <div class="card-overlay">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Geek Science</h3>
+                        <p class="card-excerpt">Explore the cutting edge of quantum physics, AI consciousness, and technologies that blur the line between science fiction and reality. The future is stranger than you think.</p>
+                        <div class="card-meta">
+                            <span class="meta-item"><i class="far fa-clock"></i> 15 min read</span>
+                            <span class="meta-item"><i class="far fa-eye"></i> 3.1k views</span>
+                        </div>
+                        <a href="article.html?pillar=science" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Psych Mind Hacks -->
+                <article class="pillar-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-image">
+                        <img src="images/psych-mind.jpg" alt="Psych Mind Hacks">
+                        <div class="card-overlay">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Psych Mind Hacks</h3>
+                        <p class="card-excerpt">Master the hidden mechanisms of influence, persuasion, and cognitive biases. Learn the dark psychology techniques used by marketers, politicians, and master manipulators.</p>
+                        <div class="card-meta">
+                            <span class="meta-item"><i class="far fa-clock"></i> 10 min read</span>
+                            <span class="meta-item"><i class="far fa-eye"></i> 4.2k views</span>
+                        </div>
+                        <a href="article.html?pillar=psychology" class="btn-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the Tribe Section -->
+    <section class="tribe" id="tribe">
+        <div class="container">
+            <div class="tribe-content">
+                <div class="tribe-text" data-aos="fade-right">
+                    <h2 class="tribe-title">Join the Tribe</h2>
+                    <p class="tribe-description">Get exclusive access to deep-dive investigations, hidden knowledge, and psychological insights that mainstream media won't touch.</p>
+                    <div class="tribe-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Weekly deep-dive articles</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Exclusive member-only content</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Early access to investigations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tribe-form" data-aos="fade-left">
+                    <div class="form-header">
+                        <i class="fas fa-gift"></i>
+                        <h3>Free E-Book</h3>
+                        <p>23 Hidden Science Facts & Dark Psychology Tricks</p>
+                    </div>
+                    <form id="emailForm" class="email-form">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <span>Get Free E-Book</span>
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <p class="form-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed">
+        <div class="container">
+            <h2 class="section-title">Follow Our Journey</h2>
+            <div class="instagram-grid">
+                <div class="insta-post" data-aos="zoom-in">
+                    <img src="images/insta1.jpg" alt="Instagram Post 1">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-post" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="images/insta2.jpg" alt="Instagram Post 2">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-post" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="images/insta3.jpg" alt="Instagram Post 3">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-post" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="images/insta4.jpg" alt="Instagram Post 4">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn-instagram">
+                <i class="fab fa-instagram"></i>
+                Follow @thecodex
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-eye"></i>
+                        <span>THE CODEX</span>
+                    </div>
+                    <p>Question everything. Dive deeper.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Explore</h4>
+                        <ul>
+                            <li><a href="#">Conspiracy Vault</a></li>
+                            <li><a href="#">Geek Science</a></li>
+                            <li><a href="#">Psych Mind Hacks</a></li>
+                            <li><a href="#">All Articles</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="#">Become Member</a></li>
+                            <li><a href="#">Join Discord</a></li>
+                            <li><a href="#">Submit Story</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Codex. All rights reserved. Question everything.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Member Badge -->
+    <div class="member-badge">
+        <a href="#" class="badge-link">
+            <i class="fas fa-crown"></i>
+            <span>Become Codex Member</span>
+        </a>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

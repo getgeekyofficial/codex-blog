@@ -1,0 +1,62 @@
+# Image Placeholders
+
+This folder contains placeholder images for the blog. The website uses Unsplash images as placeholders, but you can replace them with your own custom images.
+
+## Required Images
+
+### Homepage
+- `conspiracy-vault.jpg` (800x600) - Conspiracy Vault pillar card
+- `geek-science.jpg` (800x600) - Geek Science pillar card
+- `psych-mind.jpg` (800x600) - Psych Mind Hacks pillar card
+- `insta1.jpg` (500x500) - Instagram post 1
+- `insta2.jpg` (500x500) - Instagram post 2
+- `insta3.jpg` (500x500) - Instagram post 3
+- `insta4.jpg` (500x500) - Instagram post 4
+
+### Article Pages
+- Hero images (1600x900) - Featured article images
+- In-article images (1200x600) - Supporting visuals
+- Author avatars (150x150) - Author profile pictures
+
+## Current Setup
+
+The website currently uses Unsplash URLs for images:
+- Conspiracy: https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4
+- Science: https://images.unsplash.com/photo-1635070041078-e363dbe005cb
+- Psychology: https://images.unsplash.com/photo-1559757175-5700dde675bc
+
+## Customization
+
+To use your own images:
+1. Add your images to this folder
+2. Update the `src` attributes in HTML files
+3. Update the image loading functions in JavaScript files
+
+## Image Guidelines
+
+- **Format**: JPG or PNG
+- **Optimization**: Compress images for web
+- **Dark Theme**: Choose images that work with dark backgrounds
+- **Neon Accents**: Images with cyan/magenta tones work best
+- **Quality**: High resolution for hero images, optimized for cards
+
+## Tools for Image Creation
+
+- **Canva**: Create custom graphics
+- **Photoshop**: Professional editing
+- **GIMP**: Free alternative
+- **Unsplash**: Free stock photos
+- **Pexels**: Free stock photos
+- **Midjourney/DALL-E**: AI-generated images
+
+## Recommended Styles
+
+- Dark, mysterious atmosphere
+- Technology/digital themes
+- Neon lighting effects
+- Cyberpunk aesthetics
+- Abstract patterns
+- Hooded figures
+- Matrix-style code
+- Brain/psychology imagery
+- Space/quantum themes
