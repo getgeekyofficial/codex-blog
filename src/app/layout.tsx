@@ -4,6 +4,7 @@ import "./globals.css"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({
@@ -100,6 +101,7 @@ export default function RootLayout({
                 <Footer />
                 <Toaster />
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     )
