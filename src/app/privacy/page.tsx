@@ -23,9 +23,9 @@ export default function PrivacyPage() {
                                 We collect minimal information to provide you with a better experience:
                             </p>
                             <ul className="list-disc list-inside space-y-2">
-                                <li>Email addresses (if you subscribe to our newsletter)</li>
-                                <li>Analytics data (via Vercel Analytics)</li>
-                                <li>Performance metrics (via Vercel Speed Insights)</li>
+                                <li>Email addresses (only if you voluntarily subscribe to our newsletter)</li>
+                                <li>Usage data (via Vercel Analytics to understand site traffic)</li>
+                                <li>Performance metrics (via Vercel Speed Insights to optimize loading times)</li>
                             </ul>
 
                             <h3 className="text-xl font-bold text-foreground mt-6">How We Use Your Data</h3>

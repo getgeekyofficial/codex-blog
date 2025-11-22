@@ -59,7 +59,18 @@ export default function TermsPage() {
                                 the materials on our site.
                             </p>
 
-                            <h2 className="text-2xl font-bold text-foreground">7. Changes to Terms</h2>
+
+                            <h2 className="text-2xl font-bold text-foreground">7. DMCA & Copyright Policy</h2>
+                            <p>
+                                Get Geeky respects the intellectual property rights of others. If you believe that your work has been copied in a way that constitutes copyright infringement, please contact us at <a href="mailto:legal@getgeeky.blog" className="text-neon-cyan hover:underline">legal@getgeeky.blog</a> with the following information:
+                            </p>
+                            <ul className="list-disc list-inside space-y-2">
+                                <li>A description of the copyrighted work</li>
+                                <li>The location of the infringing material on our site</li>
+                                <li>Your contact information</li>
+                            </ul>
+
+                            <h2 className="text-2xl font-bold text-foreground">8. Changes to Terms</h2>
                             <p>
                                 We reserve the right to modify these terms at any time. Continued use of the site
                                 constitutes acceptance of modified terms.

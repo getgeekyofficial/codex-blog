@@ -90,6 +90,13 @@ export default function AboutPage() {
                         </ul>
                     </div>
 
+                    <div className="bg-card border border-border rounded-lg p-8">
+                        <h2 className="font-display text-3xl font-bold mb-4">Editorial Standards</h2>
+                        <p className="text-muted-foreground leading-relaxed">
+                            We are committed to originality and integrity. All content on Get Geeky is original, researched, and written by our team. We do not plagiarize. When we reference external ideas or data, we provide clear attribution. We believe in giving credit where it is due and building upon the collective knowledge of humanity with respect and honesty.
+                        </p>
+                    </div>
+
                     <div className="bg-gradient-to-r from-neon-cyan/10 via-neon-purple/10 to-neon-magenta/10 border border-neon-cyan/30 rounded-lg p-8">
                         <h2 className="font-display text-3xl font-bold mb-4 text-gradient">Join the empire</h2>
                         <p className="text-muted-foreground leading-relaxed mb-6">
