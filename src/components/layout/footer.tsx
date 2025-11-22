@@ -7,7 +7,7 @@ export function Footer() {
 
     const footerLinks = {
         explore: [
-            { label: "All Articles", href: "/posts" },
+            { label: "All Articles", href: "/all-posts" },
             { label: "Conspiracy Vault", href: "/category/conspiracy" },
             { label: "Geek Science", href: "/category/science" },
             { label: "Psych Mind Hacks", href: "/category/psychology" },
