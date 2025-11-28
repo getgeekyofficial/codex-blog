@@ -1,0 +1,262 @@
+
+> getgeeky-blog@1.0.0 build
+> next build
+
+  Γû▓ Next.js 14.2.33
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/25) ...
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150373) {
+  digest: '3571459108'
+}
+   Generating static pages (6/25) 
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135349)
+    at listOnTimeout (node:internal/timers:605:17) {
+  digest: '3066792507'
+}
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135349)
+    at listOnTimeout (node:internal/timers:605:17) {
+  digest: '3066792507'
+}
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150373) {
+  digest: '3571459108'
+}
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150373) {
+  digest: '3571459108'
+}
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135349)
+    at listOnTimeout (node:internal/timers:605:17) {
+  digest: '3066792507'
+}
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135349)
+    at listOnTimeout (node:internal/timers:605:17) {
+  digest: '3066792507'
+}
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135349)
+    at listOnTimeout (node:internal/timers:605:17) {
+  digest: '3066792507'
+}
+
+Error occurred prerendering page "/posts/crispr-human-enhancement". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150373)
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135349)
+    at listOnTimeout (node:internal/timers:605:17) {
+  digest: '3066792507'
+}
+
+Error occurred prerendering page "/posts/cryptocurrency-control". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150373)
+   Generating static pages (12/25) 
+
+Error occurred prerendering page "/posts/cognitive-biases-decision-making". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: Cannot read properties of undefined (reading 'color')
+    at N (C:\Users\asees\Desktop\codex-blog\.next\server\app\posts\[slug]\page.js:1:8403)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_context_frame:63:14)
+    at Timeout._onTimeout (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150373)
+TypeError: Cannot read properties of undefined (reading 'title')
+    at C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16879
+    at Array.map (<anonymous>)
+    at u (C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16207)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572) {
+  digest: '902475458'
+}
+TypeError: Cannot read properties of undefined (reading 'title')
+    at C:\Users\asees\Desktop\codex-blog\.next\server\app\all-posts\page.js:1:5500
+    at Array.map (<anonymous>)
+    at f (C:\Users\asees\Desktop\codex-blog\.next\server\app\all-posts\page.js:1:4830)
+    at nj (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46252)
+    at nM (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47572)
+    at nM (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61547)
+    at nN (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64547)
+    at nB (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67539)
+    at nD (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66681)
+    at nN (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64854) {
+  digest: '983450877'
+}
+
+Error occurred prerendering page "/all-posts". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: Cannot read properties of undefined (reading 'title')
+    at C:\Users\asees\Desktop\codex-blog\.next\server\app\all-posts\page.js:1:5500
+    at Array.map (<anonymous>)
+    at f (C:\Users\asees\Desktop\codex-blog\.next\server\app\all-posts\page.js:1:4830)
+    at nj (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:46252)
+    at nM (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:47572)
+    at nM (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:61547)
+    at nN (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64547)
+    at nB (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:67539)
+    at nD (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:66681)
+    at nN (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:64854)
+   Generating static pages (18/25) 
+TypeError: Cannot read properties of undefined (reading 'title')
+    at C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16879
+    at Array.map (<anonymous>)
+    at u (C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16207)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572) {
+  digest: '902475458'
+}
+TypeError: Cannot read properties of undefined (reading 'title')
+    at C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16879
+    at Array.map (<anonymous>)
+    at u (C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16207)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572) {
+  digest: '902475458'
+}
+
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+
+TypeError: Cannot read properties of undefined (reading 'title')
+    at C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16879
+    at Array.map (<anonymous>)
+    at u (C:\Users\asees\Desktop\codex-blog\.next\server\app\page.js:1:16207)
+    at eh (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:134660)
+    at e (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:137545)
+    at ek (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:138019)
+    at Array.toJSON (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135629)
+    at stringify (<anonymous>)
+    at eP (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142093)
+    at eE (C:\Users\asees\Desktop\codex-blog\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142572)
+ Γ£ô Generating static pages (25/25)
+
+> Export encountered errors on following paths:
+	/all-posts/page: /all-posts
+	/page: /
+	/posts/[slug]/page: /posts/cognitive-biases-decision-making
+	/posts/[slug]/page: /posts/crispr-human-enhancement
+	/posts/[slug]/page: /posts/cryptocurrency-control
