@@ -9,6 +9,7 @@ export interface PostMetadata {
     image: string
     tags: string[]
     featured?: boolean
+    views: number
 }
 
 export interface Post extends PostMetadata {

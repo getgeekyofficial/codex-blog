@@ -47,6 +47,7 @@ export function getPostBySlug(slug: string): Post | null {
             image: data.image,
             tags: data.tags || [],
             featured: data.featured || false,
+            views: data.views || 0,
             content,
             readTime: Math.ceil(minutes)
         }
