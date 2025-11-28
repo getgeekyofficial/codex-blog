@@ -1,26 +1,41 @@
 "use client"
 
-color: "neon-cyan",
+import Link from "next/link"
+import Image from "next/image"
+import { Lock, Atom, Brain, Clock, Eye } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+
+const pillars = [
+    {
+        id: "conspiracy",
+        title: "Conspiracy Vault",
+        description:
+            "Uncover the hidden narratives behind world events. From classified documents to suppressed histories, we question the official story and follow the evidence wherever it leads.",
+        icon: Lock,
+        image: "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&h=600&fit=crop",
+        readTime: 12,
+        color: "neon-cyan",
     },
-{
-    id: "science",
+    {
+        id: "science",
         title: "Geek Science",
-            description:
-    "Explore the cutting edge of quantum physics, AI consciousness, and technologies that blur the line between science fiction and reality. The future is stranger than you think.",
+        description:
+            "Explore the cutting edge of quantum physics, AI consciousness, and technologies that blur the line between science fiction and reality. The future is stranger than you think.",
         icon: Atom,
-            image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
-                readTime: 15,
-                    color: "neon-purple",
+        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
+        readTime: 15,
+        color: "neon-purple",
     },
-{
-    id: "psychology",
+    {
+        id: "psychology",
         title: "Psych Mind Hacks",
-            description:
-    "Master the hidden mechanisms of influence, persuasion, and cognitive biases. Learn the dark psychology techniques used by marketers, politicians, and master manipulators.",
+        description:
+            "Master the hidden mechanisms of influence, persuasion, and cognitive biases. Learn the dark psychology techniques used by marketers, politicians, and master manipulators.",
         icon: Brain,
-            image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=600&fit=crop",
-                readTime: 10,
-                    color: "neon-magenta",
+        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=600&fit=crop",
+        readTime: 10,
+        color: "neon-magenta",
     },
 ]
 
