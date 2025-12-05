@@ -1,6 +1,6 @@
 import { HeroSection } from "@/components/home/hero-section"
 import { PillarCards } from "@/components/home/pillar-cards"
-import { NewsletterSection } from "@/components/home/newsletter-section"
+import { NewsletterSection } from "@/components/lazy"
 import { FeaturedPosts } from "@/components/home/featured-posts"
 import { getAllPosts } from "@/lib/blog-utils"
 

@@ -12,7 +12,8 @@ export async function generateStaticParams() {
     }))
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+    const params = await props.params
     const categoryInfo = CATEGORIES[params.id as Category]
 
     if (!categoryInfo) {
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     }
 }
 
-export default function CategoryPage({ params }: { params: { id: string } }) {
+export default async function CategoryPage(props: { params: Promise<{ id: string }> }) {
+    const params = await props.params
     const categoryId = params.id as Category
     const categoryInfo = CATEGORIES[categoryId]
 

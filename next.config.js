@@ -1,14 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    typescript: {
-        ignoreBuildErrors: true,
-    },
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
     images: {
         domains: ['images.unsplash.com', 'i.pravatar.cc'],
         formats: ['image/avif', 'image/webp'],
+        minimumCacheTTL: 60,
+    },
+    compress: true,
+    // Optimize bundle size for lucide-react icons
+    modularizeImports: {
+        'lucide-react': {
+            transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+        },
+    },
+    // Optimize package imports
+    experimental: {
+        optimizePackageImports: ['lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
     },
     async headers() {
         return [

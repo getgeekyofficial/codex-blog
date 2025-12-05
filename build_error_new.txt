@@ -1,0 +1,34 @@
+
+> getgeeky-blog@1.0.0 build
+> next build
+
+   Γû▓ Next.js 15.5.7
+   - Experiments (use with caution):
+     ┬╖ optimizePackageImports
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/components/lazy/index.ts
+Error:   x `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[C:\Users\asees\Desktop\codex-blog\src\components\lazy\index.ts:4:1]
+  1 |     import dynamic from 'next/dynamic'
+  2 |     
+  3 |     // Lazy load non-critical components for better performance
+  4 | ,-> export const ShareButtons = dynamic(
+  5 | |       () => import('@/components/article/share-buttons').then((mod) => mod.ShareButtons),
+  6 | |       {
+  7 | |           ssr: false,
+  8 | |       }
+  9 | `-> )
+ 10 |     
+ 11 |     export const TableOfContents = dynamic(
+ 11 |         () => import('@/components/article/table-of-contents').then((mod) => mod.TableOfContents)
+    `----
+
+Import trace for requested module:
+./src/components/lazy/index.ts
+./src/app/page.tsx
+
+
+> Build failed because of webpack errors

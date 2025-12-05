@@ -3,10 +3,11 @@ import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { Post, PostMetadata, Category } from '@/types/blog'
+import { cache } from 'react'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
-export function getAllPosts(): Post[] {
+export const getAllPosts = cache((): Post[] => {
     // Ensure directory exists
     if (!fs.existsSync(postsDirectory)) {
         return []
@@ -23,9 +24,9 @@ export function getAllPosts(): Post[] {
         .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
 
     return allPosts
-}
+})
 
-export function getPostBySlug(slug: string): Post | null {
+export const getPostBySlug = cache((slug: string): Post | null => {
     try {
         const fullPath = path.join(postsDirectory, `${slug}.mdx`)
 
@@ -55,7 +56,7 @@ export function getPostBySlug(slug: string): Post | null {
         console.error(`Error reading post ${slug}:`, error)
         return null
     }
-}
+})
 
 export function getPostsByCategory(category: Category): Post[] {
     const allPosts = getAllPosts()

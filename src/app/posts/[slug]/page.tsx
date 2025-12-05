@@ -5,10 +5,13 @@ import Link from 'next/link'
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ShareButtons } from '@/components/article/share-buttons'
+import { ShareButtons } from '@/components/lazy'
 import { ReadingProgress } from '@/components/article/reading-progress'
-import { TableOfContents } from '@/components/article/table-of-contents'
+import { TableOfContents } from '@/components/lazy'
 import { CATEGORIES } from '@/types/blog'
+
+// Revalidate every hour for ISR
+export const revalidate = 3600
 
 export async function generateStaticParams() {
     const posts = getAllPosts()
@@ -17,7 +20,8 @@ export async function generateStaticParams() {
     }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params
     const post = getPostBySlug(params.slug)
 
     if (!post) {
@@ -37,7 +41,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 }
 
-export default function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
+    const params = await props.params
     const post = getPostBySlug(params.slug)
 
     if (!post) {
@@ -65,6 +70,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                         src={post.image}
                         alt={post.title}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         priority
                     />
@@ -171,6 +177,8 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                                                     src={relatedPost.image}
                                                     alt={relatedPost.title}
                                                     fill
+                                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                                    loading="lazy"
                                                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                                                 />
                                             </div>

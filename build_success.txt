@@ -1,0 +1,48 @@
+
+> getgeeky-blog@1.0.0 build
+> next build
+
+   Γû▓ Next.js 15.5.7
+   - Experiments (use with caution):
+     ┬╖ optimizePackageImports
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 2.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/25) ...
+   Generating static pages (6/25) 
+   Generating static pages (12/25) 
+   Generating static pages (18/25) 
+ Γ£ô Generating static pages (25/25)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                       Size  First Load JS  Revalidate  Expire
+Γöî Γùï /                                          5.45 kB         124 kB
+Γö£ Γùï /_not-found                                  140 B         102 kB
+Γö£ Γùï /about                                       140 B         102 kB
+Γö£ Γùï /all-posts                                 3.23 kB         121 kB
+Γö£ ╞Æ /api/newsletter                              140 B         102 kB
+Γö£ ΓùÅ /category/[id]                               172 B         110 kB
+Γö£   Γö£ /category/conspiracy
+Γö£   Γö£ /category/science
+Γö£   Γöö /category/psychology
+Γö£ Γùï /contact                                     140 B         102 kB
+Γö£ ΓùÅ /posts/[slug]                              2.59 kB         121 kB          1h      1y
+Γö£   Γö£ /posts/ai-consciousness-debate                                           1h      1y
+Γö£   Γö£ /posts/dark-patterns-ux                                                  1h      1y
+Γö£   Γö£ /posts/cognitive-biases-decision-making                                  1h      1y
+Γö£   Γöö [+9 more paths]
+Γö£ Γùï /privacy                                     140 B         102 kB
+Γöö Γùï /terms                                       140 B         102 kB
++ First Load JS shared by all                   102 kB
+  Γö£ chunks/255-47484af636b98715.js             45.8 kB
+  Γö£ chunks/4bd1b696-c023c6e3521b1417.js        54.2 kB
+  Γöö other shared chunks (total)                2.05 kB
+
+
+Γùï  (Static)   prerendered as static content
+ΓùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+╞Æ  (Dynamic)  server-rendered on demand
+
