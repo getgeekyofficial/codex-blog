@@ -11,7 +11,7 @@ interface DisqusCommentsProps {
 
 export function DisqusComments({ post }: DisqusCommentsProps) {
     // Replace this with your actual Disqus shortname
-    const disqusShortname = 'getgeekyofficial'
+    const disqusShortname = 'getgeeky-1'
 
     const disqusConfig = {
         url: typeof window !== 'undefined' ? `${window.location.origin}/posts/${post.slug}` : '',
