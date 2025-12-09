@@ -24,8 +24,8 @@ export default function ContactPage() {
                     <div className="space-y-4 text-muted-foreground">
                         <p>
                             <strong className="text-foreground">Email:</strong>{' '}
-                            <a href="mailto:submit@getgeeky.blog" className="text-neon-cyan hover:underline">
-                                submit@getgeeky.blog
+                            <a href="mailto:getgeekyofficial@gmail.com" className="text-neon-cyan hover:underline">
+                                getgeekyofficial@gmail.com
                             </a>
                         </p>
                         <p>
