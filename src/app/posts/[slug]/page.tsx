@@ -6,6 +6,7 @@ import { Clock, Calendar, User, ArrowLeft } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ShareButtons } from '@/components/lazy'
+import { DisqusComments } from '@/components/article/disqus-comments'
 import { ReadingProgress } from '@/components/article/reading-progress'
 import { TableOfContents } from '@/components/lazy'
 import { CATEGORIES } from '@/types/blog'
@@ -154,6 +155,9 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
 
                             {/* Share Section */}
                             <ShareButtons title={post.title} />
+
+                            {/* Comments Section */}
+                            <DisqusComments post={post} />
                         </div>
 
                         {/* Table of Contents */}
