@@ -10,6 +10,8 @@ import { DisqusComments } from '@/components/article/disqus-comments'
 import { ReadingProgress } from '@/components/article/reading-progress'
 import { TableOfContents } from '@/components/lazy'
 import { CATEGORIES } from '@/types/blog'
+import { DonationButton } from '@/components/monetization/donation-button'
+import { AffiliateDisclosure } from '@/components/monetization/affiliate-disclosure'
 
 // Revalidate every hour for ISR
 export const revalidate = 3600
@@ -132,8 +134,11 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
                                 {post.excerpt}
                             </p>
 
+
+
                             {/* MDX Content */}
                             <div className="article-content">
+                                <AffiliateDisclosure />
                                 <MDXContent content={post.content} />
                             </div>
 
@@ -152,6 +157,9 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
                                     </div>
                                 </div>
                             )}
+
+                            {/* Donation Section */}
+                            <DonationButton />
 
                             {/* Share Section */}
                             <ShareButtons title={post.title} />

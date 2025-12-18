@@ -68,7 +68,7 @@ export function Navbar() {
                         ))}
                         <li>
                             <Button variant="neon" size="sm" asChild>
-                                <Link href="/#newsletter">Become Member</Link>
+                                <Link href="/membership">Become Member</Link>
                             </Button>
                         </li>
                     </ul>
