@@ -67,7 +67,7 @@ export const metadata: Metadata = {
         description:
             "Explore conspiracy theories, cutting-edge science, and psychology insights. Question everything. Dive deeper.",
         images: ["/og-image.jpg"],
-        creator: "@getgeeky",
+        creator: "@getgeekyHQ",
     },
     robots: {
         index: true,
