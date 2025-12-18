@@ -46,6 +46,10 @@ const nextConfig = {
                         value: 'origin-when-cross-origin'
                     },
                     {
+                        key: 'Content-Security-Policy',
+                        value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' blob: data: https://images.unsplash.com https://i.pravatar.cc; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://vitals.vercel-insights.com; frame-src 'self' https://www.youtube.com;"
+                    },
+                    {
                         key: 'Permissions-Policy',
                         value: 'camera=(), microphone=(), geolocation=()'
                     }

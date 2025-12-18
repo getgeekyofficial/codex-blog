@@ -1,24 +1,24 @@
 import { NextRequest, NextResponse } from "next/server"
+import { z } from "zod"
+
+const subscribeSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Invalid email address"),
+})
 
 export async function POST(request: NextRequest) {
     try {
-        const { name, email } = await request.json()
+        const body = await request.json()
+        const validation = subscribeSchema.safeParse(body)
 
-        if (!name || !email) {
+        if (!validation.success) {
             return NextResponse.json(
-                { error: "Name and email are required" },
+                { error: validation.error.errors[0].message },
                 { status: 400 }
             )
         }
 
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if (!emailRegex.test(email)) {
-            return NextResponse.json(
-                { error: "Invalid email address" },
-                { status: 400 }
-            )
-        }
+        const { name, email } = validation.data
 
         // TODO: Integrate with ConvertKit
         // For now, we'll log the subscription
