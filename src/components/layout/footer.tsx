@@ -29,8 +29,8 @@ export function Footer() {
     const socialLinks = [
         { icon: Twitter, href: "https://twitter.com/getgeekyHQ", label: "Twitter" },
         { icon: Instagram, href: "https://instagram.com/getgeekyofficial", label: "Instagram" },
-        { icon: Youtube, href: "https://youtube.com/@getgeeky", label: "YouTube" },
-        { icon: Mail, href: "mailto:hello@getgeeky.blog", label: "Email" },
+        { icon: Youtube, href: "https://youtube.com/@getgeekyofficial", label: "YouTube" },
+        { icon: Mail, href: "mailto:getgeekyofficial@gmail.com", label: "Email" },
     ]
 
     return (

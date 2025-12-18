@@ -69,8 +69,8 @@ export default function PrivacyPage() {
                         <h2 className="font-display text-2xl font-bold mb-4">Contact Us</h2>
                         <p className="text-muted-foreground">
                             For privacy concerns or questions:{' '}
-                            <a href="mailto:privacy@getgeeky.blog" className="text-neon-cyan hover:underline">
-                                privacy@getgeeky.blog
+                            <a href="mailto:getgeekyofficial@gmail.com" className="text-neon-cyan hover:underline">
+                                getgeekyofficial@gmail.com
                             </a>
                         </p>
                     </section>

@@ -62,7 +62,7 @@ export default function TermsPage() {
 
                             <h2 className="text-2xl font-bold text-foreground">7. DMCA & Copyright Policy</h2>
                             <p>
-                                Get Geeky respects the intellectual property rights of others. If you believe that your work has been copied in a way that constitutes copyright infringement, please contact us at <a href="mailto:legal@getgeeky.blog" className="text-neon-cyan hover:underline">legal@getgeeky.blog</a> with the following information:
+                                Get Geeky respects the intellectual property rights of others. If you believe that your work has been copied in a way that constitutes copyright infringement, please contact us at <a href="mailto:getgeekyofficial@gmail.com" className="text-neon-cyan hover:underline">getgeekyofficial@gmail.com</a> with the following information:
                             </p>
                             <ul className="list-disc list-inside space-y-2">
                                 <li>A description of the copyrighted work</li>
@@ -79,8 +79,8 @@ export default function TermsPage() {
                             <div className="mt-8 pt-8 border-t border-border">
                                 <p className="text-sm">
                                     Questions about these terms?{' '}
-                                    <a href="mailto:legal@getgeeky.blog" className="text-neon-cyan hover:underline">
-                                        legal@getgeeky.blog
+                                    <a href="mailto:getgeekyofficial@gmail.com" className="text-neon-cyan hover:underline">
+                                        getgeekyofficial@gmail.com
                                     </a>
                                 </p>
                             </div>
