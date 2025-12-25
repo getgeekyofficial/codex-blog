@@ -818,6 +818,12 @@ async def stripe_webhook(request: Request):
         logging.error(f"Webhook error: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
+# Health check endpoint
+@api_router.get("/health")
+async def api_health_check():
+    """Health check endpoint for Kubernetes at /api/health"""
+    return {"status": "healthy", "service": "getgeeky-codex-api"}
+
 # Include router
 app.include_router(api_router)
 
