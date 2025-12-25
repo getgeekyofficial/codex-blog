@@ -47,6 +47,7 @@ security = HTTPBearer()
 resend.api_key = os.environ['RESEND_API_KEY']
 SENDER_EMAIL = os.environ['SENDER_EMAIL']
 STRIPE_API_KEY = os.environ['STRIPE_API_KEY']
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
 
 # Create the main app
 app = FastAPI()
