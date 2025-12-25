@@ -191,7 +191,7 @@ const Library = () => {
                       <Bookmark size={18} />
                     </button>
                   </div>
-                  {insight.source_url && (
+                  {insight.source_url && insight.source_url.trim() !== '' && (
                     <a href={insight.source_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80" data-testid={`source-link-${index}`}>
                       <ExternalLink size={18} />
                     </a>
