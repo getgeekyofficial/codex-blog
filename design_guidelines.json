@@ -1,0 +1,129 @@
+{
+  "identity": {
+    "name": "GetGeeky Codex",
+    "persona": "The Digital Monolith",
+    "vibe": "Serious, Edgy, Intellectual, Mysterious, High-Tech",
+    "metaphor": "A classified digital vault of forbidden knowledge"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "JetBrains Mono, monospace",
+      "weight": "700",
+      "tracking": "-0.02em",
+      "usage": "All section titles, hero headers, and 'Daily Hit' numbers. Gives the 'Codex/Terminal' feel."
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "weight": "400",
+      "usage": "All paragraph text, UI labels, and long-form content. Ensures maximum readability."
+    },
+    "accents": {
+      "font_family": "JetBrains Mono, monospace",
+      "weight": "400",
+      "style": "uppercase",
+      "tracking": "0.1em",
+      "usage": "Tags, dates, small labels, breadcrumbs."
+    }
+  },
+  "colors": {
+    "theme_mode": "dark",
+    "palette": {
+      "background": "#0a0a0a",
+      "foreground": "#ededed",
+      "card": "#121212",
+      "card_foreground": "#ffffff",
+      "primary": "#7c3aed",
+      "primary_foreground": "#ffffff",
+      "border": "#27272a",
+      "muted": "#27272a",
+      "muted_foreground": "#a1a1aa"
+    },
+    "category_colors": {
+      "ai_unleashed": "#10b981",
+      "dark_psychology": "#f43f5e",
+      "conspiracy_vault": "#f59e0b",
+      "geek_science": "#06b6d4"
+    },
+    "gradients": {
+      "hero_glow": "radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, rgba(10, 10, 10, 0) 70%)",
+      "card_hover": "linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)"
+    }
+  },
+  "visual_enhancers": {
+    "borders": "1px solid rgba(255, 255, 255, 0.08)",
+    "glassmorphism": {
+      "background": "rgba(10, 10, 10, 0.7)",
+      "backdrop_filter": "blur(12px)",
+      "border": "1px solid rgba(255, 255, 255, 0.1)"
+    },
+    "shadows": {
+      "card": "0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3)",
+      "glow": "0 0 20px rgba(124, 58, 237, 0.3)"
+    },
+    "textures": "Subtle noise overlay (opacity 0.03) on the main background to prevent digital flatness."
+  },
+  "grids": {
+    "dashboard": "grid-cols-1 md:grid-cols-3 gap-6",
+    "library": "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6",
+    "daily_hit": "grid-cols-1 gap-8 max-w-2xl mx-auto"
+  },
+  "layouts": {
+    "container_padding": "px-6 py-8 md:px-12 md:py-12",
+    "max_width": "max-w-7xl mx-auto",
+    "spacing_scale": "Relaxed. Use p-6 or p-8 for cards instead of p-4."
+  },
+  "components": {
+    "buttons": {
+      "style": "Sharp edges or minimal rounded-md (2px). No pill shapes.",
+      "primary": "bg-primary text-white hover:bg-primary/90 shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-all",
+      "secondary": "border border-border bg-transparent hover:bg-white/5 hover:border-white/20"
+    },
+    "cards": {
+      "style": "Flat dark surface (#121212) with 1px subtle border. Hover state: border color lightens, slight lift.",
+      "daily_hit_card": "Must use 'Tracing Beam' effect or a glowing top border to signify importance."
+    },
+    "inputs": {
+      "style": "bg-black/50 border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-md h-12"
+    }
+  },
+  "motion": {
+    "transitions": "transition-all duration-300 ease-out",
+    "hover_effects": "translate-y-[-2px] brightness-110",
+    "page_load": "opacity-0 translate-y-4 -> opacity-100 translate-y-0 (staggered)"
+  },
+  "image_urls": {
+    "ai_unleashed": {
+      "url": "https://images.unsplash.com/photo-1760931969401-9bd6ee902798?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwYWJzdHJhY3QlMjBkYXJrJTIwbmVvbnxlbnwwfHx8fDE3NjY2Mzk3MTd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Futuristic robot head with glowing red triangle symbol. Use for AI category headers or cards."
+    },
+    "dark_psychology": {
+      "url": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxodW1hbiUyMGJyYWluJTIwcHN5Y2hvbG9neSUyMGRhcmslMjBteXN0ZXJ5fGVufDB8fHx8MTc2NjYzOTcxOXww&ixlib=rb-4.1.0&q=85",
+      "description": "Black and white photo of a brain. Use for Psychology category."
+    },
+    "conspiracy_vault": {
+      "url": "https://images.unsplash.com/photo-1765445666581-76c7db6ca705?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxzZWNyZXQlMjBmaWxlcyUyMGNvbnNwaXJhY3klMjBhYnN0cmFjdHxlbnwwfHx8fDE3NjY2Mzk3MjB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Glitching document with blue and yellow text. Use for Conspiracy category."
+    },
+    "geek_science": {
+      "url": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsYWJvcmF0b3J5JTIwc2NpZW5jZSUyMGZ1dHVyaXN0aWMlMjBkYXJrfGVufDB8fHx8MTc2NjYzOTcyM3ww&ixlib=rb-4.1.0&q=85",
+      "description": "A refrigerator in a room with neon lights (Cryo-chamber vibe). Use for Science category."
+    }
+  },
+  "instructions_to_main_agent": [
+    "FORCE DARK MODE: Ensure the 'dark' class is always applied to the html/body tag. Do not build a light mode toggle.",
+    "FONT INSTALLATION: Add 'JetBrains Mono' and 'Manrope' via Google Fonts in index.html or CSS import.",
+    "NO GRADIENT TEXT: Do not use gradient text for headings. It looks cheap. Use solid white or off-white.",
+    "USE SHADCN: Use Shadcn UI components for all interactive elements (forms, dialogs, dropdowns) but style them to match the 'Digital Monolith' theme (remove rounded-xl, use rounded-md or square).",
+    "DAILY HIT UI: The 'Daily Hit' is the core feature. Make these cards look like 'Classified Files' or 'Data Packets'. Use a monospace font for the date/metadata.",
+    "ONBOARDING: The interest selection screen should feel like 'initializing a system'. Use toggle buttons that glow when selected."
+  ],
+  "universal_guidelines": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts. Use asymmetry.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) for sticky headers.",
+    "Every interaction needs micro-animations - hover states, transitions.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "All interactive elements MUST include data-testid attribute."
+  ]
+}
