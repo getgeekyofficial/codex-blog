@@ -187,7 +187,7 @@ async def forgot_password(req: ForgotPasswordRequest):
         "used": False
     })
     
-    reset_url = f"https://app.getgeeky.blog/reset-password?token={reset_token}"
+    reset_url = f"{FRONTEND_URL}/reset-password?token={reset_token}"
     html_content = f"""
     <h2>Reset Your GetGeeky Codex Password</h2>
     <p>Click the link below to reset your password:</p>
