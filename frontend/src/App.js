@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminInsights from './pages/AdminInsights';
 import AdminAnalytics from './pages/AdminAnalytics';
+import AdminSyncHistory from './pages/AdminSyncHistory';
 import SubscriptionSuccess from './pages/SubscriptionSuccess';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
