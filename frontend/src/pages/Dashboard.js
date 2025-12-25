@@ -200,7 +200,7 @@ const Dashboard = () => {
                         <span className="text-sm">Save</span>
                       </button>
                     </div>
-                    {insight.source_url && (
+                    {insight.source_url && insight.source_url.trim() !== '' && (
                       <a
                         href={insight.source_url}
                         target="_blank"
