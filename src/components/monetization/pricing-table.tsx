@@ -1,8 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
-import Link from "next/link"
+import { Check, Loader2 } from "lucide-react"
+import { getStripe } from "@/lib/stripe"
+import { useState } from "react"
+import { useToast } from "@/components/ui/use-toast"
 
 const tiers = [
     {
@@ -17,7 +19,8 @@ const tiers = [
         ],
         cta: "Current Clearance",
         variant: "outline" as const,
-        href: "#newsletter"
+        href: "#newsletter",
+        priceId: null // Free tier
     },
     {
         name: "Operative",
@@ -33,7 +36,7 @@ const tiers = [
         cta: "Upgrade Clearance",
         variant: "neon" as const,
         popular: true,
-        href: "https://buy.stripe.com/test_operative" // Placeholder
+        priceId: "PENDING_OPERATIVE_PRICE_ID" // TODO: Replace with real Price ID
     },
     {
         name: "Insider",
@@ -49,11 +52,50 @@ const tiers = [
         ],
         cta: "Request Access",
         variant: "outline" as const,
-        href: "https://buy.stripe.com/test_insider" // Placeholder
+        priceId: "PENDING_INSIDER_PRICE_ID" // TODO: Replace with real Price ID
     }
 ]
 
 export function PricingTable() {
+    const [loading, setLoading] = useState<string | null>(null)
+    const { toast } = useToast()
+
+    const handleCheckout = async (priceId: string | null) => {
+        if (!priceId) return; // Handle free tier separately if needed
+
+        setLoading(priceId);
+
+        try {
+            const stripe = await getStripe();
+            if (!stripe) throw new Error("Stripe failed to initialize");
+
+            const { error } = await (stripe as any).redirectToCheckout({
+                lineItems: [{ price: priceId, quantity: 1 }],
+                mode: 'subscription',
+                successUrl: `${window.location.origin}/membership?success=true`,
+                cancelUrl: `${window.location.origin}/membership?canceled=true`,
+            });
+
+            if (error) {
+                console.error("Stripe error:", error);
+                toast({
+                    title: "Checkout Error",
+                    description: error.message || "Something went wrong. Please try again.",
+                    variant: "destructive",
+                })
+            }
+        } catch (err) {
+            console.error("Checkout error:", err);
+            toast({
+                title: "Error",
+                description: "Failed to initiate checkout.",
+                variant: "destructive",
+            })
+        } finally {
+            setLoading(null);
+        }
+    }
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {tiers.map((tier) => (
@@ -83,9 +125,25 @@ export function PricingTable() {
                     <Button
                         variant={tier.variant}
                         className="w-full"
-                        asChild
+                        disabled={!!loading && loading !== tier.priceId}
+                        onClick={() => {
+                            if (tier.priceId) {
+                                handleCheckout(tier.priceId);
+                            } else {
+                                // Scroll to newsletter for free tier
+                                const element = document.getElementById("newsletter");
+                                element?.scrollIntoView({ behavior: "smooth" });
+                            }
+                        }}
                     >
-                        <Link href={tier.href}>{tier.cta}</Link>
+                        {loading === tier.priceId ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Processing...
+                            </>
+                        ) : (
+                            tier.cta
+                        )}
                     </Button>
                 </div>
             ))}
