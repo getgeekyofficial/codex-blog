@@ -8,6 +8,7 @@ export interface PostMetadata {
     author: string
     image: string
     tags: string[]
+    keywords?: string[]
     featured?: boolean
     views: number
 }
