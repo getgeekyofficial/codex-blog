@@ -834,6 +834,37 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Scheduler for automatic blog sync
+scheduler = AsyncIOScheduler()
+
+async def scheduled_blog_sync():
+    """Scheduled task to sync blog posts"""
+    try:
+        logging.info("Running scheduled blog sync...")
+        admin = await db.users.find_one({"role": "admin"}, {"_id": 0})
+        if admin:
+            result = await perform_blog_sync(admin["id"], triggered_by="cron")
+            logging.info(f"Scheduled sync completed: {result}")
+        else:
+            logging.warning("No admin user found for scheduled sync")
+    except Exception as e:
+        logging.error(f"Scheduled sync error: {str(e)}")
+
+@app.on_event("startup")
+async def startup_scheduler():
+    """Start the scheduler on app startup"""
+    if SYNC_INTERVAL_HOURS > 0:
+        scheduler.add_job(
+            scheduled_blog_sync,
+            trigger=IntervalTrigger(hours=SYNC_INTERVAL_HOURS),
+            id="blog_sync_job",
+            name="Sync blog posts from GitHub",
+            replace_existing=True
+        )
+        scheduler.start()
+        logging.info(f"Scheduler started: Blog sync every {SYNC_INTERVAL_HOURS} hours")
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
+    scheduler.shutdown()
     client.close()
