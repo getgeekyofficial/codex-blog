@@ -659,6 +659,70 @@ async def get_sync_history(admin: dict = Depends(require_admin)):
     history = await db.sync_history.find({}, {"_id": 0}).sort("timestamp", -1).limit(20).to_list(20)
     return {"history": history}
 
+# GITHUB WEBHOOK
+@api_router.post("/webhook/github-blog")
+async def github_blog_webhook(request: Request):
+    """Handle GitHub webhook for blog updates"""
+    try:
+        # Get webhook signature
+        signature = request.headers.get("X-Hub-Signature-256", "")
+        
+        # Read body
+        body = await request.body()
+        
+        # Verify signature
+        if GITHUB_WEBHOOK_SECRET:
+            expected_signature = "sha256=" + hmac.new(
+                GITHUB_WEBHOOK_SECRET.encode(),
+                body,
+                hashlib.sha256
+            ).hexdigest()
+            
+            if not hmac.compare_digest(signature, expected_signature):
+                raise HTTPException(status_code=401, detail="Invalid signature")
+        
+        # Parse payload
+        payload = await request.json()
+        
+        # Check if this is a push event to main branch
+        if payload.get("ref") != f"refs/heads/{GITHUB_BRANCH}":
+            return {"message": "Not a main branch push, ignoring"}
+        
+        # Check if changes are in content/posts
+        commits = payload.get("commits", [])
+        has_post_changes = False
+        for commit in commits:
+            added = commit.get("added", [])
+            modified = commit.get("modified", [])
+            removed = commit.get("removed", [])
+            all_changes = added + modified + removed
+            
+            for file_path in all_changes:
+                if file_path.startswith(f"{CONTENT_PATH}/") and file_path.endswith(".mdx"):
+                    has_post_changes = True
+                    break
+            if has_post_changes:
+                break
+        
+        if not has_post_changes:
+            return {"message": "No blog post changes detected"}
+        
+        # Get admin user for sync
+        admin = await db.users.find_one({"role": "admin"}, {"_id": 0})
+        if not admin:
+            logging.error("No admin user found for webhook sync")
+            return {"message": "No admin user available"}
+        
+        # Trigger sync
+        logging.info("GitHub webhook triggered blog sync")
+        result = await perform_blog_sync(admin["id"], triggered_by="webhook")
+        
+        return result
+        
+    except Exception as e:
+        logging.error(f"Webhook error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # PAYMENT ROUTES
 @api_router.post("/payments/checkout/session")
 async def create_checkout_session(request: Request, user: dict = Depends(get_current_user)):
