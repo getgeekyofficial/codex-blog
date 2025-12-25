@@ -198,6 +198,11 @@ const AdminInsights = () => {
                   'Sync Blog Posts'
                 )}
               </Button>
+              <Link to="/admin/sync-history">
+                <Button variant="ghost" size="sm" data-testid="sync-history-link">
+                  <History size={18} />
+                </Button>
+              </Link>
               <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsDialogOpen(open); if (!open) resetForm(); }}>
                 <DialogTrigger asChild>
                   <Button className="glow-effect" data-testid="create-insight-button">
