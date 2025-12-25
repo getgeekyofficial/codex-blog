@@ -48,6 +48,29 @@ const AdminInsights = () => {
     }
   };
 
+  const handleSyncBlog = async () => {
+    setSyncing(true);
+    try {
+      const response = await axios.post(`${API}/admin/sync-blog`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      const { synced, updated, errors } = response.data;
+      
+      if (errors && errors.length > 0) {
+        toast.warning(`Synced ${synced} new, updated ${updated}. ${errors.length} errors occurred.`);
+      } else {
+        toast.success(`Blog synced! ${synced} new insights, ${updated} updated.`);
+      }
+      
+      fetchInsights();
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Failed to sync blog posts');
+    } finally {
+      setSyncing(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
