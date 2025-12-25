@@ -59,7 +59,7 @@ const AdminDashboard = () => {
                 className="w-12 h-12 rounded-md flex items-center justify-center mb-4"
                 style={{ backgroundColor: `${section.color}20` }}
               >
-                <section.Icon size={24} style={{ color: section.color }} />
+                <section.icon size={24} style={{ color: section.color }} />
               </div>
               <h2 className="text-2xl font-bold mb-2 flex items-center justify-between">
                 {section.title}
