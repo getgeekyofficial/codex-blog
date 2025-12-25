@@ -188,7 +188,7 @@ const AdminInsights = () => {
                     Create Insight
                   </Button>
                 </DialogTrigger>
-              <DialogContent className="bg-[#121212] border-border max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="insight-dialog">
+                <DialogContent className="bg-[#121212] border-border max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="insight-dialog">
                 <DialogHeader>
                   <DialogTitle className="text-2xl">{editingInsight ? 'Edit Insight' : 'Create Insight'}</DialogTitle>
                 </DialogHeader>
