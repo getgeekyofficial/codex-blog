@@ -164,6 +164,7 @@ function App() {
             <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
             <Route path="/admin/insights" element={<ProtectedRoute requireAdmin><AdminInsights /></ProtectedRoute>} />
             <Route path="/admin/analytics" element={<ProtectedRoute requireAdmin><AdminAnalytics /></ProtectedRoute>} />
+            <Route path="/admin/sync-history" element={<ProtectedRoute requireAdmin><AdminSyncHistory /></ProtectedRoute>} />
           </Routes>
           <Toaster position="top-right" theme="dark" />
         </div>
