@@ -17,6 +17,7 @@ const AdminInsights = () => {
   const { token } = useAuth();
   const [insights, setInsights] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingInsight, setEditingInsight] = useState(null);
   const [formData, setFormData] = useState({
