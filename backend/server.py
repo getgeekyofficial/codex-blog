@@ -841,11 +841,6 @@ async def health_check():
     """Health check endpoint for Kubernetes liveness/readiness probes"""
     return {"status": "healthy", "service": "getgeeky-codex"}
 
-@api_router.get("/health")
-async def api_health_check():
-    """Health check endpoint for Kubernetes at /api/health"""
-    return {"status": "healthy", "service": "getgeeky-codex-api"}
-
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
