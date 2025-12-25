@@ -80,6 +80,7 @@ const AdminInsights = () => {
       }
       
       fetchInsights();
+      fetchLastSync();
     } catch (error) {
       toast.error(error.response?.data?.detail || 'Failed to sync blog posts');
     } finally {
