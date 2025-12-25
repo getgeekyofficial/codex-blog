@@ -18,6 +18,7 @@ const AdminInsights = () => {
   const [insights, setInsights] = useState([]);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
+  const [lastSync, setLastSync] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingInsight, setEditingInsight] = useState(null);
   const [formData, setFormData] = useState({
@@ -32,6 +33,7 @@ const AdminInsights = () => {
 
   useEffect(() => {
     fetchInsights();
+    fetchLastSync();
   }, []);
 
   const fetchInsights = async () => {
