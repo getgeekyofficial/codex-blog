@@ -164,13 +164,30 @@ const AdminInsights = () => {
               </Link>
               <h1 className="text-2xl font-bold" data-testid="insights-management-title">Manage Insights</h1>
             </div>
-            <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsDialogOpen(open); if (!open) resetForm(); }}>
-              <DialogTrigger asChild>
-                <Button className="glow-effect" data-testid="create-insight-button">
-                  <Plus size={20} className="mr-2" />
-                  Create Insight
-                </Button>
-              </DialogTrigger>
+            <div className="flex items-center space-x-3">
+              <Button 
+                onClick={handleSyncBlog}
+                disabled={syncing}
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary/10"
+                data-testid="sync-blog-button"
+              >
+                {syncing ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Syncing...
+                  </>
+                ) : (
+                  'Sync Blog Posts'
+                )}
+              </Button>
+              <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsDialogOpen(open); if (!open) resetForm(); }}>
+                <DialogTrigger asChild>
+                  <Button className="glow-effect" data-testid="create-insight-button">
+                    <Plus size={20} className="mr-2" />
+                    Create Insight
+                  </Button>
+                </DialogTrigger>
               <DialogContent className="bg-[#121212] border-border max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="insight-dialog">
                 <DialogHeader>
                   <DialogTitle className="text-2xl">{editingInsight ? 'Edit Insight' : 'Create Insight'}</DialogTitle>
