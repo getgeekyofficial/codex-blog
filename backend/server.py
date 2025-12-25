@@ -459,6 +459,8 @@ async def override_daily_hit(req: DailyHitOverride, admin: dict = Depends(requir
 GITHUB_REPO = "getgeekyofficial/codex-blog"
 GITHUB_BRANCH = "main"
 CONTENT_PATH = "content/posts"
+SYNC_INTERVAL_HOURS = int(os.environ.get('SYNC_INTERVAL_HOURS', '6'))
+GITHUB_WEBHOOK_SECRET = os.environ.get('GITHUB_WEBHOOK_SECRET', '')
 
 def map_category_to_codex(blog_category: str) -> str:
     """Map blog categories to Codex categories"""
@@ -483,16 +485,27 @@ def extract_excerpt(content: str, max_sentences: int = 2) -> str:
             break
     return ' '.join(excerpt_sentences)
 
-@api_router.post("/admin/sync-blog")
-async def sync_blog_posts(admin: dict = Depends(require_admin)):
-    """Sync blog posts from GitHub repository"""
+async def perform_blog_sync(admin_id: str, triggered_by: str = "manual") -> dict:
+    """Core blog sync logic - reusable for manual, cron, and webhook triggers"""
+    start_time = time.time()
+    sync_id = str(uuid.uuid4())
+    
     try:
         # Fetch list of files from GitHub
         api_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{CONTENT_PATH}?ref={GITHUB_BRANCH}"
         response = requests.get(api_url)
         
         if response.status_code != 200:
-            raise HTTPException(status_code=500, detail=f"Failed to fetch from GitHub: {response.text}")
+            error_msg = f"Failed to fetch from GitHub: {response.text}"
+            await db.sync_history.insert_one({
+                "id": sync_id,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "triggered_by": triggered_by,
+                "status": "failed",
+                "error": error_msg,
+                "duration_seconds": time.time() - start_time
+            })
+            return {"status": "failed", "error": error_msg}
         
         files = response.json()
         mdx_files = [f for f in files if f["name"].endswith(".mdx")]
@@ -582,7 +595,7 @@ async def sync_blog_posts(admin: dict = Depends(require_admin)):
                         "main_text": excerpt,
                         "source_url": blog_url,
                         "premium_only": metadata.get("featured", False),
-                        "created_by": admin["id"],
+                        "created_by": admin_id,
                         "created_at": datetime.now(timezone.utc).isoformat()
                     }
                     await db.insights.insert_one(insight_doc)
@@ -592,7 +605,23 @@ async def sync_blog_posts(admin: dict = Depends(require_admin)):
                 errors.append(f"{file_info['name']}: {str(e)}")
                 logging.error(f"Error syncing {file_info['name']}: {str(e)}")
         
+        duration = time.time() - start_time
+        
+        # Save sync history
+        await db.sync_history.insert_one({
+            "id": sync_id,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "triggered_by": triggered_by,
+            "status": "success",
+            "synced_count": synced_count,
+            "updated_count": updated_count,
+            "total_files": len(mdx_files),
+            "errors": errors,
+            "duration_seconds": round(duration, 2)
+        })
+        
         return {
+            "status": "success",
             "message": "Blog sync completed",
             "synced": synced_count,
             "updated": updated_count,
@@ -601,8 +630,34 @@ async def sync_blog_posts(admin: dict = Depends(require_admin)):
         }
         
     except Exception as e:
-        logging.error(f"Blog sync error: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        duration = time.time() - start_time
+        error_msg = str(e)
+        logging.error(f"Blog sync error: {error_msg}")
+        
+        await db.sync_history.insert_one({
+            "id": sync_id,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "triggered_by": triggered_by,
+            "status": "failed",
+            "error": error_msg,
+            "duration_seconds": round(duration, 2)
+        })
+        
+        return {"status": "failed", "error": error_msg}
+
+@api_router.post("/admin/sync-blog")
+async def sync_blog_posts(admin: dict = Depends(require_admin)):
+    """Manually trigger blog sync"""
+    result = await perform_blog_sync(admin["id"], triggered_by="manual")
+    if result["status"] == "failed":
+        raise HTTPException(status_code=500, detail=result.get("error", "Sync failed"))
+    return result
+
+@api_router.get("/admin/sync-history")
+async def get_sync_history(admin: dict = Depends(require_admin)):
+    """Get sync history"""
+    history = await db.sync_history.find({}, {"_id": 0}).sort("timestamp", -1).limit(20).to_list(20)
+    return {"history": history}
 
 # PAYMENT ROUTES
 @api_router.post("/payments/checkout/session")
