@@ -450,6 +450,155 @@ async def override_daily_hit(req: DailyHitOverride, admin: dict = Depends(requir
     )
     return {"message": "Daily hit overridden"}
 
+# GITHUB BLOG SYNC
+GITHUB_REPO = "getgeekyofficial/codex-blog"
+GITHUB_BRANCH = "main"
+CONTENT_PATH = "content/posts"
+
+def map_category_to_codex(blog_category: str) -> str:
+    """Map blog categories to Codex categories"""
+    category_map = {
+        "science": "Geek Science",
+        "psychology": "Dark Psychology",
+        "conspiracy": "Conspiracy Vault",
+        "ai": "AI Unleashed",
+        "technology": "AI Unleashed"
+    }
+    return category_map.get(blog_category.lower(), "Geek Science")
+
+def extract_excerpt(content: str, max_sentences: int = 2) -> str:
+    """Extract first N sentences from content"""
+    sentences = re.split(r'(?<=[.!?])\s+', content)
+    excerpt_sentences = []
+    for sentence in sentences[:max_sentences]:
+        clean_sentence = re.sub(r'\*\*|\*|#|\[|\]|\(|\)', '', sentence).strip()
+        if clean_sentence and len(clean_sentence) > 20:
+            excerpt_sentences.append(clean_sentence)
+        if len(excerpt_sentences) >= max_sentences:
+            break
+    return ' '.join(excerpt_sentences)
+
+@api_router.post("/admin/sync-blog")
+async def sync_blog_posts(admin: dict = Depends(require_admin)):
+    """Sync blog posts from GitHub repository"""
+    try:
+        # Fetch list of files from GitHub
+        api_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{CONTENT_PATH}?ref={GITHUB_BRANCH}"
+        response = requests.get(api_url)
+        
+        if response.status_code != 200:
+            raise HTTPException(status_code=500, detail=f"Failed to fetch from GitHub: {response.text}")
+        
+        files = response.json()
+        mdx_files = [f for f in files if f["name"].endswith(".mdx")]
+        
+        synced_count = 0
+        updated_count = 0
+        errors = []
+        
+        for file_info in mdx_files:
+            try:
+                # Fetch raw content
+                raw_url = file_info["download_url"]
+                content_response = requests.get(raw_url)
+                
+                if content_response.status_code != 200:
+                    errors.append(f"{file_info['name']}: Failed to fetch content")
+                    continue
+                
+                raw_content = content_response.text
+                
+                # Parse frontmatter
+                if not raw_content.startswith("---"):
+                    errors.append(f"{file_info['name']}: No frontmatter found")
+                    continue
+                
+                # Extract frontmatter and content
+                parts = raw_content.split("---", 2)
+                if len(parts) < 3:
+                    errors.append(f"{file_info['name']}: Invalid frontmatter format")
+                    continue
+                
+                frontmatter_text = parts[1]
+                main_content = parts[2].strip()
+                
+                # Parse YAML frontmatter
+                try:
+                    metadata = yaml.safe_load(frontmatter_text)
+                except yaml.YAMLError as e:
+                    errors.append(f"{file_info['name']}: YAML parse error - {str(e)}")
+                    continue
+                
+                # Extract data
+                title = metadata.get("title", "")
+                blog_category = metadata.get("category", "science")
+                codex_category = map_category_to_codex(blog_category)
+                tags = metadata.get("tags", [])
+                if isinstance(tags, str):
+                    tags = [t.strip() for t in tags.split(",")]
+                
+                # Use excerpt if available, otherwise extract from content
+                excerpt = metadata.get("excerpt", "")
+                if not excerpt:
+                    excerpt = extract_excerpt(main_content, max_sentences=2)
+                
+                # Generate blog URL
+                slug = file_info["name"].replace(".mdx", "")
+                blog_url = f"https://codex-blog.vercel.app/posts/{slug}"
+                
+                # Check if insight already exists
+                existing = await db.insights.find_one(
+                    {"$or": [{"title": title}, {"source_url": blog_url}]},
+                    {"_id": 0}
+                )
+                
+                if existing:
+                    # Update existing insight
+                    await db.insights.update_one(
+                        {"id": existing["id"]},
+                        {"$set": {
+                            "title": title,
+                            "category": codex_category,
+                            "tags": tags,
+                            "main_text": excerpt,
+                            "source_url": blog_url,
+                            "premium_only": metadata.get("featured", False)
+                        }}
+                    )
+                    updated_count += 1
+                else:
+                    # Create new insight
+                    insight_id = str(uuid.uuid4())
+                    insight_doc = {
+                        "id": insight_id,
+                        "title": title,
+                        "category": codex_category,
+                        "tags": tags,
+                        "main_text": excerpt,
+                        "source_url": blog_url,
+                        "premium_only": metadata.get("featured", False),
+                        "created_by": admin["id"],
+                        "created_at": datetime.now(timezone.utc).isoformat()
+                    }
+                    await db.insights.insert_one(insight_doc)
+                    synced_count += 1
+                    
+            except Exception as e:
+                errors.append(f"{file_info['name']}: {str(e)}")
+                logging.error(f"Error syncing {file_info['name']}: {str(e)}")
+        
+        return {
+            "message": "Blog sync completed",
+            "synced": synced_count,
+            "updated": updated_count,
+            "total_files": len(mdx_files),
+            "errors": errors if errors else []
+        }
+        
+    except Exception as e:
+        logging.error(f"Blog sync error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # PAYMENT ROUTES
 @api_router.post("/payments/checkout/session")
 async def create_checkout_session(request: Request, user: dict = Depends(get_current_user)):
