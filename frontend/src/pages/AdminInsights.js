@@ -50,6 +50,19 @@ const AdminInsights = () => {
     }
   };
 
+  const fetchLastSync = async () => {
+    try {
+      const response = await axios.get(`${API}/admin/sync-history`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (response.data.history && response.data.history.length > 0) {
+        setLastSync(response.data.history[0]);
+      }
+    } catch (error) {
+      console.error('Failed to fetch sync history');
+    }
+  };
+
   const handleSyncBlog = async () => {
     setSyncing(true);
     try {
