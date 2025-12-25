@@ -34,10 +34,6 @@
     @apply border-border;
   }
   
-  html {
-    @apply dark;
-  }
-  
   body {
     @apply bg-[#0a0a0a] text-foreground;
     font-family: 'Manrope', sans-serif;
