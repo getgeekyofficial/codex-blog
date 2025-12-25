@@ -278,6 +278,7 @@ const AdminInsights = () => {
                 </form>
               </DialogContent>
             </Dialog>
+            </div>
           </div>
         </div>
       </nav>
