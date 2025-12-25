@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Rocket } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -76,9 +76,17 @@ export function Navbar() {
                             </li>
                         ))}
                         <li>
-                            <Button variant="neon" size="sm" asChild>
-                                <Link href="/membership">Become Member</Link>
-                            </Button>
+                            <div className="flex items-center gap-4">
+                                <Button variant="neon" size="sm" asChild className="group">
+                                    <Link href="https://getgeeky.org" target="_blank" rel="noopener noreferrer">
+                                        <Rocket className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+                                        Launch App
+                                    </Link>
+                                </Button>
+                                <Button variant="outline" size="sm" asChild>
+                                    <Link href="/membership">Become Member</Link>
+                                </Button>
+                            </div>
                         </li>
                     </ul>
 
@@ -108,8 +116,16 @@ export function Navbar() {
                                 </li>
                             ))}
                             <li>
-                                <Button variant="neon" className="w-full" asChild>
-                                    <Link href="/#newsletter">Become Member</Link>
+                                <Button variant="neon" className="w-full group" asChild>
+                                    <Link href="https://getgeeky.org" target="_blank" rel="noopener noreferrer">
+                                        <Rocket className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+                                        Launch App
+                                    </Link>
+                                </Button>
+                            </li>
+                            <li>
+                                <Button variant="outline" className="w-full" asChild>
+                                    <Link href="/membership">Become Member</Link>
                                 </Button>
                             </li>
                         </ul>
