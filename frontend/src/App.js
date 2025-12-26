@@ -135,7 +135,7 @@ const PublicRoute = ({ children }) => {
     if (!user.onboarding_completed) {
       return <Navigate to="/onboarding" />;
     }
-    return user.role === 'admin' ? <Navigate to="/admin" /> : <Navigate to="/" />;
+    return user.role === 'admin' ? <Navigate to="/admin" /> : <Navigate to="/dashboard" />;
   }
 
   return children;
