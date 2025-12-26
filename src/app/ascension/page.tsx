@@ -3,6 +3,7 @@ import { getAllProtocols } from "@/lib/ascension-utils"
 import { STATS } from "@/types/blog"
 import { Button } from "@/components/ui/button"
 import { Shield, Brain, Zap, Radio } from "lucide-react"
+import { NeuralProfile } from "@/components/ascension/neural-profile"
 
 export const metadata = {
     title: 'Ascension Protocol | Codex',
@@ -34,7 +35,7 @@ export default function AscensionPage() {
         <div className="min-h-screen bg-background text-foreground pt-24 pb-12">
             <div className="container mx-auto px-4">
                 {/* Header */}
-                <div className="max-w-4xl mx-auto mb-16 text-center">
+                <div className="max-w-4xl mx-auto mb-8 text-center">
                     <h1 className="font-display text-4xl md:text-6xl font-bold mb-4 tracking-tighter">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-magenta">
                             ASCENSION PROTOCOL
@@ -43,6 +44,11 @@ export default function AscensionPage() {
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                         Your life is the ultimate project. Select a domain. Execute the protocol. Level up.
                     </p>
+                </div>
+
+                {/* Neural Profile */}
+                <div className="max-w-4xl mx-auto">
+                    <NeuralProfile />
                 </div>
 
                 {/* Dashboard Grid */}

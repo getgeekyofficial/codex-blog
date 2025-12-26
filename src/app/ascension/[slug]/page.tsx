@@ -1,5 +1,6 @@
 import { getAllProtocols, getProtocolBySlug } from '@/lib/ascension-utils'
 import { MDXContent } from '@/components/article/mdx-components'
+import { ProtocolCompletion } from '@/components/ascension/protocol-completion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Clock, ArrowLeft, Trophy, Shield, Brain, Zap, Radio, Target } from 'lucide-react'
@@ -139,15 +140,7 @@ export default async function ProtocolPage(props: { params: Promise<{ slug: stri
                 </main>
 
                 <div className="mt-16 pt-8 border-t border-border">
-                    <div className="bg-card border border-border rounded-xl p-8 text-center">
-                        <h3 className="font-display text-2xl font-bold mb-4">Protocol Complete?</h3>
-                        <p className="text-muted-foreground mb-6">
-                            Verified execution awards <span className="text-neon-cyan font-mono font-bold">{protocol.xp}</span> to your Neural Profile.
-                        </p>
-                        <Button variant="neon" size="lg" className="w-full md:w-auto">
-                            MARK AS COMPLETE
-                        </Button>
-                    </div>
+                    <ProtocolCompletion slug={protocol.slug} xp={protocol.xp} />
                 </div>
             </div>
         </article>
