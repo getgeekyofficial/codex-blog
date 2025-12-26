@@ -106,7 +106,7 @@ const ProtectedRoute = ({ children, requireAdmin = false, requireOnboarding = tr
   }
 
   if (requireAdmin && user.role !== 'admin') {
-    return <Navigate to="/" />;
+    return <Navigate to="/dashboard" />;
   }
 
   if (requireOnboarding && user.role !== 'admin' && !user.onboarding_completed && window.location.pathname !== '/onboarding') {
