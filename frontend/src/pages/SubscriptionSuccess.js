@@ -68,7 +68,7 @@ const SubscriptionSuccess = () => {
             <p className="text-muted-foreground mb-8">
               Your subscription is now active. Enjoy unlimited access to all premium insights and daily hits every day.
             </p>
-            <Button onClick={() => navigate('/')} className="glow-effect" data-testid="go-to-dashboard-button">
+            <Button onClick={() => navigate('/dashboard')} className="glow-effect" data-testid="go-to-dashboard-button">
               Go to Dashboard
             </Button>
           </div>
