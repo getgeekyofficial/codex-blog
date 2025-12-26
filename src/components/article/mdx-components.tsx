@@ -1,8 +1,10 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 import { CopyCodeButton } from './copy-code-button'
+import { AlertTriangle, Info, CheckCircle, AlertCircle, Zap } from 'lucide-react'
 
 // Custom MDX components
 const components = {
+    // ... (h1-h4, p, ul, ol, li remain same)
     h1: ({ children, ...props }: any) => (
         <h1 className="font-display text-4xl md:text-5xl font-bold mt-8 mb-4 text-gradient" {...props}>
             {children}
@@ -49,11 +51,75 @@ const components = {
             {children}
         </li>
     ),
-    blockquote: ({ children, ...props }: any) => (
-        <blockquote className="border-l-4 border-neon-cyan pl-4 py-2 my-4 italic bg-card/50 rounded-r" {...props}>
-            {children}
-        </blockquote>
-    ),
+    blockquote: ({ children, ...props }: any) => {
+        // Handle GitHub Alerts
+        let content = children
+        let alertType = null
+
+        // Deep check for alert syntax mostly found in the first paragraph child
+        if (children?.props?.children && typeof children.props.children === 'string') {
+            const text = children.props.children
+            const match = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i)
+            if (match) {
+                alertType = match[1].toUpperCase()
+                // Remove the alert tag from the text
+                const cleanText = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/i, '')
+                // Create a new element with cleaned text
+                content = <p {...children.props}>{cleanText}</p>
+            }
+        }
+        // Also handling if the first child is an array (common in complex MDX)
+        else if (Array.isArray(children)) {
+            const firstChild = children[0]
+            if (firstChild?.props?.children && typeof firstChild.props.children === 'string') {
+                const text = firstChild.props.children
+                const match = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i)
+                if (match) {
+                    alertType = match[1].toUpperCase()
+                    const cleanText = text.replace(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/i, '')
+                    const newFirstChild = <p {...firstChild.props}>{cleanText}</p>
+                    content = [newFirstChild, ...children.slice(1)]
+                }
+            }
+        }
+
+        if (alertType) {
+            const alertStyles: Record<string, string> = {
+                NOTE: 'border-neon-purple text-neon-purple/90',
+                TIP: 'border-neon-cyan text-neon-cyan/90',
+                IMPORTANT: 'border-neon-magenta text-neon-magenta/90',
+                WARNING: 'border-yellow-500 text-yellow-500/90',
+                CAUTION: 'border-red-500 text-red-500/90'
+            }
+
+            const Icon = {
+                NOTE: Info,
+                TIP: Zap,
+                IMPORTANT: AlertCircle,
+                WARNING: AlertTriangle,
+                CAUTION: AlertTriangle
+            }[alertType as keyof typeof alertStyles] || Info
+
+            return (
+                <div className={`border-l-4 rounded-r bg-card/50 p-4 my-6 ${alertStyles[alertType]}`} {...props}>
+                    <div className="font-bold mb-2 flex items-center gap-2">
+                        <Icon size={20} />
+                        {alertType}
+                    </div>
+                    <div className="text-foreground/90">
+                        {content}
+                    </div>
+                </div>
+            )
+        }
+
+        return (
+            <blockquote className="border-l-4 border-neon-cyan pl-4 py-2 my-4 italic bg-card/50 rounded-r" {...props}>
+                {children}
+            </blockquote>
+        )
+    },
+    // ... (rest of components)
     a: ({ children, href, ...props }: any) => (
         <a
             href={href}
@@ -117,10 +183,14 @@ interface MDXContentProps {
     content: string
 }
 
+
 export function MDXContent({ content }: MDXContentProps) {
     return (
         <div className="prose prose-invert max-w-none">
-            <MDXRemote source={content} components={components} />
+            <MDXRemote
+                source={content}
+                components={components}
+            />
         </div>
     )
 }

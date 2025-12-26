@@ -4,19 +4,28 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%; /* #0a0a0a */
-    --foreground: 0 0% 100%; /* #ffffff */
-    --card: 0 0% 10%; /* #1a1a1a */
+    --background: 0 0% 4%;
+    /* #0a0a0a */
+    --foreground: 0 0% 100%;
+    /* #ffffff */
+    --card: 0 0% 10%;
+    /* #1a1a1a */
     --card-foreground: 0 0% 100%;
-    --popover: 0 0% 7%; /* #121212 */
+    --popover: 0 0% 7%;
+    /* #121212 */
     --popover-foreground: 0 0% 100%;
-    --primary: 180 100% 50%; /* #00ffff cyan */
+    --primary: 180 100% 50%;
+    /* #00ffff cyan */
     --primary-foreground: 0 0% 4%;
-    --secondary: 300 100% 50%; /* #ff00ff magenta */
+    --secondary: 300 100% 50%;
+    /* #ff00ff magenta */
     --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 44%; /* #707070 */
-    --muted-foreground: 0 0% 69%; /* #b0b0b0 */
-    --accent: 273 100% 50%; /* #9d00ff purple */
+    --muted: 0 0% 44%;
+    /* #707070 */
+    --muted-foreground: 0 0% 69%;
+    /* #b0b0b0 */
+    --accent: 273 100% 50%;
+    /* #9d00ff purple */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -24,7 +33,7 @@
     --input: 180 100% 50% / 0.2;
     --ring: 180 100% 50%;
     --radius: 0.5rem;
-    
+
     /* Custom properties */
     --font-inter: 'Inter', sans-serif;
     --font-orbitron: 'Orbitron', sans-serif;
@@ -35,12 +44,12 @@
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -50,27 +59,27 @@
   .text-gradient {
     @apply bg-gradient-to-r from-neon-cyan to-neon-magenta bg-clip-text text-transparent;
   }
-  
+
   .glow-cyan {
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.5),
-                 0 0 20px rgba(0, 255, 255, 0.3),
-                 0 0 30px rgba(0, 255, 255, 0.2);
+      0 0 20px rgba(0, 255, 255, 0.3),
+      0 0 30px rgba(0, 255, 255, 0.2);
   }
-  
+
   .glow-magenta {
     text-shadow: 0 0 10px rgba(255, 0, 255, 0.5),
-                 0 0 20px rgba(255, 0, 255, 0.3),
-                 0 0 30px rgba(255, 0, 255, 0.2);
+      0 0 20px rgba(255, 0, 255, 0.3),
+      0 0 30px rgba(255, 0, 255, 0.2);
   }
-  
+
   .card-glow {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.1),
-                0 0 40px rgba(255, 0, 255, 0.05);
+      0 0 40px rgba(255, 0, 255, 0.05);
   }
-  
+
   .card-glow-hover {
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.3),
-                0 0 60px rgba(255, 0, 255, 0.15);
+      0 0 60px rgba(255, 0, 255, 0.15);
   }
 }
 
@@ -79,13 +88,14 @@
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 0 100%;
   }
 }
 
 .code-rain {
-  background-image: 
+  background-image:
     repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 255, 0.03) 2px, rgba(0, 255, 255, 0.03) 4px),
     repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 0, 255, 0.03) 2px, rgba(255, 0, 255, 0.03) 4px);
   animation: code-rain 20s linear infinite;
@@ -118,4 +128,53 @@
 ::-moz-selection {
   background: rgba(0, 255, 255, 0.3);
   color: white;
+}
+
+/* Markdown Alerts */
+.markdown-alert {
+  @apply border-l-4 rounded-r bg-card/50 p-4 my-6;
+}
+
+.markdown-alert-title {
+  @apply font-bold mb-2 flex items-center gap-2;
+}
+
+.markdown-alert-tip {
+  @apply border-neon-cyan;
+}
+
+.markdown-alert-tip .markdown-alert-title {
+  @apply text-neon-cyan;
+}
+
+.markdown-alert-note {
+  @apply border-neon-purple;
+}
+
+.markdown-alert-note .markdown-alert-title {
+  @apply text-neon-purple;
+}
+
+.markdown-alert-important {
+  @apply border-neon-magenta;
+}
+
+.markdown-alert-important .markdown-alert-title {
+  @apply text-neon-magenta;
+}
+
+.markdown-alert-warning {
+  @apply border-yellow-500;
+}
+
+.markdown-alert-warning .markdown-alert-title {
+  @apply text-yellow-500;
+}
+
+.markdown-alert-caution {
+  @apply border-red-500;
+}
+
+.markdown-alert-caution .markdown-alert-title {
+  @apply text-red-500;
 }
