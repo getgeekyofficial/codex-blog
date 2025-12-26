@@ -72,7 +72,7 @@ const Dashboard = () => {
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6">
-              <Link to="/" className="text-foreground font-medium" data-testid="nav-home">Home</Link>
+              <Link to="/dashboard" className="text-foreground font-medium" data-testid="nav-home">Home</Link>
               <Link to="/library" className="text-muted-foreground hover:text-foreground" data-testid="nav-library">Library</Link>
               <Link to="/profile" className="text-muted-foreground hover:text-foreground" data-testid="nav-profile">Profile</Link>
               <Button variant="ghost" size="sm" onClick={logout} data-testid="logout-button">
@@ -94,7 +94,7 @@ const Dashboard = () => {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 space-y-4 pb-4" data-testid="mobile-menu">
-              <Link to="/" className="block text-foreground font-medium">Home</Link>
+              <Link to="/dashboard" className="block text-foreground font-medium">Home</Link>
               <Link to="/library" className="block text-muted-foreground">Library</Link>
               <Link to="/profile" className="block text-muted-foreground">Profile</Link>
               <Button variant="ghost" size="sm" onClick={logout} className="w-full justify-start">
