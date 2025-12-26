@@ -43,7 +43,7 @@ const Onboarding = () => {
       );
       updateUser({ onboarding_completed: true });
       toast.success('Interests saved! Welcome to GetGeeky Codex');
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       toast.error('Failed to save interests');
     } finally {
