@@ -30,6 +30,7 @@ export function Navbar() {
 
     const navLinks = [
         { href: "/", label: "Home" },
+        { href: "/ascension", label: "Ascension" },
         { href: "/all-posts", label: "All Articles" },
         { href: "/category/conspiracy", label: "Conspiracy" },
         { href: "/category/science", label: "Science" },
