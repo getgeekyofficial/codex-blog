@@ -147,7 +147,11 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Routes>
-            {/* Public Routes */}
+            {/* Public Marketing Routes */}
+            <Route path="/" element={<Landing />} />
+            <Route path="/features" element={<Features />} />
+            
+            {/* Auth Routes */}
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
             <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
             <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
