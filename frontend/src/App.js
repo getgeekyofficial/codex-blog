@@ -5,6 +5,8 @@ import { Toaster } from 'sonner';
 import './App.css';
 
 // Import pages
+import Landing from './pages/Landing';
+import Features from './pages/Features';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
