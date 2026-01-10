@@ -1,7 +1,14 @@
 import { loadStripe } from '@stripe/stripe-js';
 
-// User provided public key
-const STRIPE_PUBLIC_KEY = 'pk_test_51Si9CJAMjhICaDRXwDU2ILS0jdeFB3sNX9zheMkZQ9xTf3n0z8lgG8VuURMNiL7gNVjf95Gyg1Z7mRAl90jGHbYK00rnIu1XhZ';
+// Get Stripe publishable key from environment variables
+const STRIPE_PUBLIC_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+if (!STRIPE_PUBLIC_KEY) {
+    throw new Error(
+        'Missing NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY environment variable. ' +
+        'Please add it to your .env.local file. See .env.example for reference.'
+    );
+}
 
 let stripePromise: ReturnType<typeof loadStripe>;
 

@@ -12,11 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/all-posts',
         '/privacy',
         '/terms',
+        '/membership',
+        '/ascension',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : 0.8,
+        priority: route === '' ? 1 : route === '/membership' ? 0.9 : 0.8,
     }))
 
     // Dynamic blog posts

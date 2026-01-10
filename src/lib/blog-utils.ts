@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
-import { Post, PostMetadata, Category } from '@/types/blog'
+import { Post, Category } from '@/types/blog'
 import { cache } from 'react'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
@@ -53,7 +53,9 @@ export const getPostBySlug = cache((slug: string): Post | null => {
             readTime: Math.ceil(minutes)
         }
     } catch (error) {
-        console.error(`Error reading post ${slug}:`, error)
+        if (process.env.NODE_ENV === 'development') {
+            console.error(`Error reading post ${slug}:`, error)
+        }
         return null
     }
 })

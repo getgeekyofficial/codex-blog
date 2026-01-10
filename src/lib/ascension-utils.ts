@@ -55,7 +55,9 @@ export const getProtocolBySlug = cache((slug: string): Protocol | null => {
             readTime: Math.ceil(minutes)
         }
     } catch (error) {
-        console.error(`Error reading protocol ${slug}:`, error)
+        if (process.env.NODE_ENV === 'development') {
+            console.error(`Error reading protocol ${slug}:`, error)
+        }
         return null
     }
 })

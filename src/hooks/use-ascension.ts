@@ -25,7 +25,9 @@ export function useAscension() {
             try {
                 setStats(JSON.parse(stored))
             } catch (e) {
-                console.error("Failed to parse ascension stats", e)
+                if (process.env.NODE_ENV === 'development') {
+                    console.error("Failed to parse ascension stats", e)
+                }
             }
         }
         setLoaded(true)

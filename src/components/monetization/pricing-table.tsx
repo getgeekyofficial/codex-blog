@@ -36,7 +36,7 @@ const tiers = [
         cta: "Upgrade Clearance",
         variant: "neon" as const,
         popular: true,
-        priceId: "PENDING_OPERATIVE_PRICE_ID" // TODO: Replace with real Price ID
+        priceId: process.env.NEXT_PUBLIC_STRIPE_OPERATIVE_PRICE_ID || null
     },
     {
         name: "Insider",
@@ -52,7 +52,7 @@ const tiers = [
         ],
         cta: "Request Access",
         variant: "outline" as const,
-        priceId: "PENDING_INSIDER_PRICE_ID" // TODO: Replace with real Price ID
+        priceId: process.env.NEXT_PUBLIC_STRIPE_INSIDER_PRICE_ID || null
     }
 ]
 
@@ -77,7 +77,6 @@ export function PricingTable() {
             });
 
             if (error) {
-                console.error("Stripe error:", error);
                 toast({
                     title: "Checkout Error",
                     description: error.message || "Something went wrong. Please try again.",
@@ -85,7 +84,6 @@ export function PricingTable() {
                 })
             }
         } catch (err) {
-            console.error("Checkout error:", err);
             toast({
                 title: "Error",
                 description: "Failed to initiate checkout.",

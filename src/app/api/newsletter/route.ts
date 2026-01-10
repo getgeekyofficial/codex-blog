@@ -20,29 +20,63 @@ export async function POST(request: NextRequest) {
 
         const { name, email } = validation.data
 
-        // TODO: Integrate with ConvertKit
-        // For now, we'll log the subscription
-        console.log("New subscriber:", { name, email })
+        // Check if ConvertKit is configured
+        const apiSecret = process.env.CONVERTKIT_API_SECRET
+        const formId = process.env.CONVERTKIT_FORM_ID
 
-        // In production, you would call ConvertKit API:
-        // const response = await fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({
-        //     api_key: process.env.CONVERTKIT_API_KEY,
-        //     email,
-        //     first_name: name,
-        //   }),
-        // })
+        if (apiSecret && formId) {
+            // ConvertKit integration
+            try {
+                const response = await fetch(
+                    `https://api.convertkit.com/v3/forms/${formId}/subscribe`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            api_secret: apiSecret,
+                            email,
+                            first_name: name,
+                        }),
+                    }
+                )
 
-        return NextResponse.json(
-            { message: "Successfully subscribed!" },
-            { status: 200 }
-        )
+                if (!response.ok) {
+                    const errorData = await response.json()
+                    throw new Error(errorData.message || 'ConvertKit API error')
+                }
+
+                return NextResponse.json(
+                    { message: "Successfully subscribed!" },
+                    { status: 200 }
+                )
+            } catch (convertkitError) {
+                // Log ConvertKit error but don't expose details to user
+                if (process.env.NODE_ENV === 'development') {
+                    console.error("ConvertKit error:", convertkitError)
+                }
+                return NextResponse.json(
+                    { error: "Failed to subscribe. Please try again later." },
+                    { status: 500 }
+                )
+            }
+        } else {
+            // Fallback: Log subscription for manual processing
+            // In production, you might want to save to a database instead
+            if (process.env.NODE_ENV === 'development') {
+                console.log("📧 New subscriber (ConvertKit not configured):", { name, email })
+            }
+
+            return NextResponse.json(
+                { message: "Successfully subscribed!" },
+                { status: 200 }
+            )
+        }
     } catch (error) {
-        console.error("Newsletter subscription error:", error)
+        if (process.env.NODE_ENV === 'development') {
+            console.error("Newsletter subscription error:", error)
+        }
         return NextResponse.json(
             { error: "Internal server error" },
             { status: 500 }
