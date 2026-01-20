@@ -67,7 +67,15 @@ export function PricingTable() {
 
         try {
             const stripe = await getStripe();
-            if (!stripe) throw new Error("Stripe failed to initialize");
+            if (!stripe) {
+                toast({
+                    title: "Payment Not Configured",
+                    description: "Stripe payments are not set up yet. Please contact support.",
+                    variant: "destructive",
+                });
+                setLoading(null);
+                return;
+            }
 
             const { error } = await (stripe as any).redirectToCheckout({
                 lineItems: [{ price: priceId, quantity: 1 }],
