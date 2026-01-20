@@ -9,6 +9,11 @@ import { ShareButtons } from '@/components/lazy'
 import { DisqusComments } from '@/components/article/disqus-comments'
 import { ReadingProgress } from '@/components/article/reading-progress'
 import { TableOfContents } from '@/components/lazy'
+import { FontSizeControl } from '@/components/article/font-size-control'
+import { BookmarkButton } from '@/components/article/bookmark-button'
+import { StructuredData } from '@/components/seo/structured-data'
+import { Reactions } from '@/components/article/reactions'
+import { TextHighlighter } from '@/components/article/text-highlighter'
 import { CATEGORIES } from '@/types/blog'
 import { DonationButton } from '@/components/monetization/donation-button'
 import { AffiliateDisclosure } from '@/components/monetization/affiliate-disclosure'
@@ -33,6 +38,8 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
         }
     }
 
+    const ogImageUrl = `/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(post.category)}&author=${encodeURIComponent(post.author)}`
+
     return {
         title: `${post.title} | Get Geeky`,
         description: post.excerpt,
@@ -40,7 +47,24 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
         openGraph: {
             title: post.title,
             description: post.excerpt,
-            images: [post.image],
+            images: [
+                {
+                    url: ogImageUrl,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
+            type: 'article',
+            publishedTime: post.date,
+            authors: [post.author],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+            images: [ogImageUrl],
+            creator: '@getgeekyHQ',
         },
     }
 }
@@ -66,7 +90,9 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
 
     return (
         <>
+            <StructuredData post={post} />
             <ReadingProgress />
+            <TextHighlighter />
             <article className="min-h-screen">
                 {/* Hero Section */}
                 <div className="relative h-[400px] md:h-[500px] w-full">
@@ -81,13 +107,19 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
                     {/* Back Button */}
-                    <div className="absolute top-8 left-4 md:left-8">
+                    <div className="absolute top-8 left-4 md:left-8 flex items-center gap-2">
                         <Button variant="ghost" asChild className="text-white hover:text-neon-cyan">
                             <Link href="/">
                                 <ArrowLeft className="mr-2" size={20} />
                                 Back to Home
                             </Link>
                         </Button>
+                    </div>
+
+                    {/* Accessibility Controls */}
+                    <div className="absolute top-8 right-4 md:right-8 flex items-center gap-2">
+                        <FontSizeControl />
+                        <BookmarkButton slug={post.slug} title={post.title} />
                     </div>
 
                     {/* Title Overlay */}
@@ -164,6 +196,9 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
 
                             {/* Share Section */}
                             <ShareButtons title={post.title} />
+
+                            {/* Reactions */}
+                            <Reactions slug={post.slug} />
 
                             {/* Comments Section */}
                             <DisqusComments post={post} />

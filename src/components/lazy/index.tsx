@@ -15,3 +15,4 @@ export const TableOfContents = dynamic(
 export const NewsletterSection = dynamic(
     () => import('@/components/home/newsletter-section').then((mod) => mod.NewsletterSection)
 )
+

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Menu, X, Rocket } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
@@ -77,7 +78,8 @@ export function Navbar() {
                             </li>
                         ))}
                         <li>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
+                                <ThemeToggle />
                                 <Button variant="neon" size="sm" asChild className="group">
                                     <Link href="https://getgeeky.org" target="_blank" rel="noopener noreferrer">
                                         <Rocket className="w-4 h-4 mr-2 group-hover:animate-pulse" />

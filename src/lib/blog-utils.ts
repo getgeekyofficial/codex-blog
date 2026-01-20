@@ -78,10 +78,46 @@ export function getFeaturedPosts(limit: number = 3): Post[] {
 }
 
 export function getRelatedPosts(currentSlug: string, category: Category, limit: number = 3): Post[] {
-    const categoryPosts = getPostsByCategory(category)
-    return categoryPosts
+    const allPosts = getAllPosts()
+    const currentPost = allPosts.find(p => p.slug === currentSlug)
+
+    if (!currentPost) {
+        return []
+    }
+
+    // Calculate similarity scores for each post
+    const postsWithScores = allPosts
         .filter(post => post.slug !== currentSlug)
+        .map(post => {
+            let score = 0
+
+            // Same category gets high score
+            if (post.category === category) {
+                score += 10
+            }
+
+            // Shared tags get points
+            const sharedTags = post.tags.filter(tag => currentPost.tags.includes(tag))
+            score += sharedTags.length * 5
+
+            // Recent posts get a small boost
+            const daysSincePublished = (Date.now() - new Date(post.date).getTime()) / (1000 * 60 * 60 * 24)
+            if (daysSincePublished < 30) {
+                score += 2
+            }
+
+            // Popular posts get a small boost
+            if (post.views && post.views > 1000) {
+                score += 1
+            }
+
+            return { post, score }
+        })
+        .sort((a, b) => b.score - a.score)
         .slice(0, limit)
+        .map(item => item.post)
+
+    return postsWithScores
 }
 
 export function searchPosts(query: string): Post[] {
