@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { Menu, X, Rocket } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
@@ -80,14 +80,11 @@ export function Navbar() {
                         <li>
                             <div className="flex items-center gap-2">
                                 <ThemeToggle />
-                                <Button variant="neon" size="sm" asChild className="group">
-                                    <Link href="https://getgeeky.org" target="_blank" rel="noopener noreferrer">
-                                        <Rocket className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                                        Launch App
-                                    </Link>
+                                <Button variant="neon" size="sm" asChild>
+                                    <Link href="/#newsletter">Subscribe</Link>
                                 </Button>
-                                <Button variant="outline" size="sm" asChild>
-                                    <Link href="/membership">Become Member</Link>
+                                <Button variant="ghost" size="sm" asChild>
+                                    <Link href="/membership">Membership</Link>
                                 </Button>
                             </div>
                         </li>
@@ -119,16 +116,13 @@ export function Navbar() {
                                 </li>
                             ))}
                             <li>
-                                <Button variant="neon" className="w-full group" asChild>
-                                    <Link href="https://getgeeky.org" target="_blank" rel="noopener noreferrer">
-                                        <Rocket className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                                        Launch App
-                                    </Link>
+                                <Button variant="neon" className="w-full" asChild>
+                                    <Link href="/#newsletter">Subscribe to Newsletter</Link>
                                 </Button>
                             </li>
                             <li>
-                                <Button variant="outline" className="w-full" asChild>
-                                    <Link href="/membership">Become Member</Link>
+                                <Button variant="ghost" className="w-full" asChild>
+                                    <Link href="/membership">Membership</Link>
                                 </Button>
                             </li>
                         </ul>

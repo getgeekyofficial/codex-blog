@@ -1,4 +1,13 @@
 export type Category = 'conspiracy' | 'science' | 'psychology'
+export type ResearchLevel = 'evidence-backed' | 'mixed-evidence' | 'speculative' | 'opinion'
+
+export interface Citation {
+    title: string
+    author: string
+    url?: string
+    year?: number
+    publication?: string
+}
 
 export interface PostMetadata {
     title: string
@@ -11,6 +20,10 @@ export interface PostMetadata {
     keywords?: string[]
     featured?: boolean
     views: number
+    researchLevel?: ResearchLevel
+    keyTakeaways?: string[]
+    pillarPage?: string
+    citations?: Citation[]
 }
 
 export interface Post extends PostMetadata {

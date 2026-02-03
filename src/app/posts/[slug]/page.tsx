@@ -17,6 +17,11 @@ import { TextHighlighter } from '@/components/article/text-highlighter'
 import { CATEGORIES } from '@/types/blog'
 import { DonationButton } from '@/components/monetization/donation-button'
 import { AffiliateDisclosure } from '@/components/monetization/affiliate-disclosure'
+import { ResearchLabel } from '@/components/article/research-label'
+import { ArticleSummary } from '@/components/article/article-summary'
+import { AuthorBox } from '@/components/article/author-box'
+import { CitationsList } from '@/components/article/citation-link'
+import { MidArticleCTA } from '@/components/growth/mid-article-cta'
 
 // Revalidate every hour for ISR
 export const revalidate = 3600
@@ -143,7 +148,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
                         {/* Main Content */}
                         <div className="flex-1 max-w-4xl">
                             {/* Metadata */}
-                            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground mb-8 pb-8 border-b border-border">
+                            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-8 border-b border-border">
                                 <div className="flex items-center gap-2">
                                     <User size={16} />
                                     <span>{post.author}</span>
@@ -160,12 +165,25 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
                                     <Clock size={16} />
                                     <span>{post.readTime} min read</span>
                                 </div>
+                                {post.researchLevel && (
+                                    <div className="ml-auto">
+                                        <ResearchLabel level={post.researchLevel} />
+                                    </div>
+                                )}
                             </div>
 
                             {/* Excerpt */}
                             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                                 {post.excerpt}
                             </p>
+
+                            {/* What You'll Learn */}
+                            {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+                                <ArticleSummary takeaways={post.keyTakeaways} />
+                            )}
+
+                            {/* Author Box */}
+                            <AuthorBox name={post.author} className="mb-8" />
 
 
 
@@ -174,6 +192,14 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
                                 <AffiliateDisclosure />
                                 <MDXContent content={post.content} />
                             </div>
+
+                            {/* Mid-Article CTA - appears after content */}
+                            <MidArticleCTA />
+
+                            {/* Citations */}
+                            {post.citations && post.citations.length > 0 && (
+                                <CitationsList citations={post.citations} />
+                            )}
 
                             {/* Tags */}
                             {post.tags.length > 0 && (
