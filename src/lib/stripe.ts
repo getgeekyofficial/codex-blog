@@ -1,4 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js';
+import Stripe from 'stripe'
 
 // Get Stripe publishable key from environment variables
 const STRIPE_PUBLIC_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -17,3 +18,15 @@ export const getStripe = () => {
     }
     return stripePromise;
 };
+
+// Server-side Stripe instance
+export const getServerStripe = () => {
+    const secretKey = process.env.STRIPE_SECRET_KEY
+    if (!secretKey) {
+        console.error('STRIPE_SECRET_KEY is not configured')
+        return null
+    }
+    return new Stripe(secretKey, {
+        apiVersion: '2026-01-28.clover',
+    })
+}

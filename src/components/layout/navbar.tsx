@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
+import { SiteSearch } from "@/components/search/site-search"
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -78,6 +79,7 @@ export function Navbar() {
                         ))}
                         <li>
                             <div className="flex items-center gap-2">
+                                <SiteSearch />
                                 <ThemeToggle />
                                 <Button variant="neon" size="sm" asChild>
                                     <Link href="/#newsletter">Subscribe</Link>

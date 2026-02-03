@@ -66,35 +66,35 @@ export function PricingTable() {
         setLoading(priceId);
 
         try {
+            // Call our checkout API
+            const response = await fetch('/api/stripe/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ priceId }),
+            })
+
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Checkout failed')
+            }
+
+            // Redirect to Stripe Checkout
             const stripe = await getStripe();
             if (!stripe) {
-                toast({
-                    title: "Payment Not Configured",
-                    description: "Stripe payments are not set up yet. Please contact support.",
-                    variant: "destructive",
-                });
-                setLoading(null);
-                return;
+                throw new Error('Stripe not loaded')
             }
 
-            const { error } = await (stripe as any).redirectToCheckout({
-                lineItems: [{ price: priceId, quantity: 1 }],
-                mode: 'subscription',
-                successUrl: `${window.location.origin}/membership?success=true`,
-                cancelUrl: `${window.location.origin}/membership?canceled=true`,
-            });
+            const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId })
 
             if (error) {
-                toast({
-                    title: "Checkout Error",
-                    description: error.message || "Something went wrong. Please try again.",
-                    variant: "destructive",
-                })
+                throw new Error(error.message || 'Redirect failed')
             }
-        } catch (err) {
+
+        } catch (err: any) {
             toast({
-                title: "Error",
-                description: "Failed to initiate checkout.",
+                title: "Checkout Error",
+                description: err.message || "Failed to initiate checkout.",
                 variant: "destructive",
             })
         } finally {

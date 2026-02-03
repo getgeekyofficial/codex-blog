@@ -43,7 +43,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
         }
     }
 
-    const ogImageUrl = `/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(post.category)}&author=${encodeURIComponent(post.author)}`
+    const ogImageUrl = `/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(CATEGORIES[post.category as keyof typeof CATEGORIES]?.title || post.category)}${post.researchLevel ? `&research=${encodeURIComponent(post.researchLevel)}` : ''}`
 
     return {
         title: `${post.title} | Get Geeky`,
