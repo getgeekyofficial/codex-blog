@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/blog-utils'
+import { getAllPosts, getAllTags } from '@/lib/blog-utils'
+import { getAllPillars } from '@/lib/pillar-utils'
+import { CATEGORIES } from '@/types/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://getgeeky.blog'
@@ -29,5 +31,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }))
 
-    return [...routes, ...posts]
+    // Categories
+    const categories = Object.keys(CATEGORIES).map((catId) => ({
+        url: `${baseUrl}/category/${catId}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }))
+
+    // Tags
+    const tags = getAllTags().map((tag) => ({
+        url: `${baseUrl}/tags/${encodeURIComponent(tag)}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.5,
+    }))
+
+    // Guides (Pillar Pages)
+    const guides = getAllPillars().map((guide) => ({
+        url: `${baseUrl}/guides/${guide.slug}`,
+        lastModified: new Date(guide.date),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+    }))
+
+    return [...routes, ...categories, ...tags, ...posts, ...guides]
 }

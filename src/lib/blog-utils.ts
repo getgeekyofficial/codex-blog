@@ -49,6 +49,9 @@ export const getPostBySlug = cache((slug: string): Post | null => {
             tags: data.tags || [],
             featured: data.featured || false,
             views: data.views || 0,
+            researchLevel: data.researchLevel,
+            keyTakeaways: data.keyTakeaways,
+            citations: data.citations,
             content,
             readTime: Math.ceil(minutes)
         }
