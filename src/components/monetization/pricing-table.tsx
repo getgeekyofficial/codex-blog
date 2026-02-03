@@ -5,6 +5,7 @@ import { Check, Loader2 } from "lucide-react"
 import { getStripe } from "@/lib/stripe"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
+import type { Stripe } from '@stripe/stripe-js'
 
 const tiers = [
     {
@@ -80,12 +81,12 @@ export function PricingTable() {
             }
 
             // Redirect to Stripe Checkout
-            const stripe = await getStripe();
+            const stripe: Stripe | null = await getStripe();
             if (!stripe) {
                 throw new Error('Stripe not loaded')
             }
 
-            const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId })
+            const { error } = await (stripe as any).redirectToCheckout({ sessionId: data.sessionId })
 
             if (error) {
                 throw new Error(error.message || 'Redirect failed')

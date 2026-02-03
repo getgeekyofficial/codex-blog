@@ -2,13 +2,14 @@ import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-    apiVersion: '2026-01-28.clover',
-})
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || ''
-
 export async function POST(req: NextRequest) {
+    // Initialize Stripe inside the function to avoid edge runtime issues
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+        apiVersion: '2026-01-28.clover',
+    })
+
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || ''
+
     const body = await req.text()
     const headersList = await headers()
     const signature = headersList.get('stripe-signature')
