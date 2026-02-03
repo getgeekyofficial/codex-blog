@@ -11,43 +11,36 @@ export async function POST(request: NextRequest) {
         const body = await request.json()
         const { email, tags } = subscribeSchema.parse(body)
 
-        // TODO: Integrate with your email service provider
-        // Examples:
+        // CONVERTKIT / KIT INTEGRATION
+        const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY || process.env.CONVERTKIT_API_KEY
+        const FORM_ID = process.env.CONVERTKIT_FORM_ID
 
-        // ConvertKit:
-        // const response = await fetch(`https://api.convertkit.com/v3/forms/${process.env.CONVERTKIT_FORM_ID}/subscribe`, {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //         api_key: process.env.CONVERTKIT_API_KEY,
-        //         email,
-        //         tags
-        //     })
-        // })
+        if (!API_KEY || !FORM_ID) {
+            console.error('ConvertKit credentials missing in .env.local')
+            // Fallback to simulation logging if keys are missing
+            console.log(`[SIMULATION (Missing Keys)] New Lead: ${email}`)
+            throw new Error('Server misconfiguration: Missing Email API Keys')
+        }
 
-        // Mailchimp:
-        // const response = await fetch(`https://${process.env.MAILCHIMP_DC}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${process.env.MAILCHIMP_API_KEY}`
-        //     },
-        //     body: JSON.stringify({
-        //         email_address: email,
-        //         status: 'subscribed',
-        //         tags: tags || []
-        //     })
-        // })
+        const response = await fetch(`https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                api_key: API_KEY,
+                email,
+                tags: tags || []
+            })
+        })
 
-        // SIMULATION MODE
-        // Since no email provider is connected, we log the capturing of the lead.
-        const timestamp = new Date().toISOString()
-        console.log(`[SIMULATION] New Lead Captured: ${email} | Tags: ${tags?.join(', ')} | Time: ${timestamp}`)
-        console.log(`[ACTION REQUIRED] Connect ConvertKit or Mailchimp to process this lead real-time.`)
+        const data = await response.json()
 
-        // Simulate success
+        if (!response.ok) {
+            console.error('ConvertKit Error:', data)
+            throw new Error(data.message || 'Failed to subscribe')
+        }
+
         return NextResponse.json(
-            { success: true, message: 'Successfully subscribed!' },
+            { success: true, message: 'Welcome to the Inner Circle.' },
             { status: 200 }
         )
     } catch (error) {
