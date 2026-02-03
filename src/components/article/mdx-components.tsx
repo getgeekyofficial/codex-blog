@@ -1,9 +1,14 @@
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote/rsc'
 import { CopyCodeButton } from './copy-code-button'
 import { AlertTriangle, Info, CheckCircle, AlertCircle, Zap } from 'lucide-react'
+import { ProductCard } from '@/components/monetization/product-card'
+import { PremiumLock } from '@/components/monetization/premium-lock'
 
 // Custom MDX components
 const components = {
+    ProductCard,
+    PremiumLock,
+    // ... (rest remains same)
     // ... (h1-h4, p, ul, ol, li remain same)
     h1: ({ children, ...props }: any) => (
         <h1 className="font-display text-4xl md:text-5xl font-bold mt-8 mb-4 text-gradient" {...props}>
