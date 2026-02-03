@@ -39,8 +39,11 @@ export async function POST(request: NextRequest) {
         //     })
         // })
 
-        // For now, just log the subscription
-        console.log('Newsletter subscription:', { email, tags })
+        // SIMULATION MODE
+        // Since no email provider is connected, we log the capturing of the lead.
+        const timestamp = new Date().toISOString()
+        console.log(`[SIMULATION] New Lead Captured: ${email} | Tags: ${tags?.join(', ')} | Time: ${timestamp}`)
+        console.log(`[ACTION REQUIRED] Connect ConvertKit or Mailchimp to process this lead real-time.`)
 
         // Simulate success
         return NextResponse.json(
