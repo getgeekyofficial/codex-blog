@@ -31,11 +31,10 @@ export function Navbar() {
 
     const navLinks = [
         { href: "/", label: "Home" },
-        { href: "/ascension", label: "Ascension" },
-        { href: "/all-posts", label: "All Articles" },
-        { href: "/category/conspiracy", label: "Conspiracy" },
-        { href: "/category/science", label: "Science" },
-        { href: "/category/psychology", label: "Psychology" },
+        { href: "/all-posts", label: "Intel Feed" },
+        { href: "/guides/conspiracy-masterclass", label: "Conspiracy" },
+        { href: "/guides/science-future", label: "Science" },
+        { href: "/guides/psychology-control", label: "Psychology" },
     ]
 
     return (

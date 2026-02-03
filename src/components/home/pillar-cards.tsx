@@ -16,6 +16,7 @@ const pillars = [
         image: "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&h=600&fit=crop",
         readTime: 12,
         color: "neon-cyan",
+        link: "/guides/conspiracy-masterclass"
     },
     {
         id: "science",
@@ -26,6 +27,7 @@ const pillars = [
         image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
         readTime: 15,
         color: "neon-purple",
+        link: "/guides/science-future"
     },
     {
         id: "psychology",
@@ -36,6 +38,7 @@ const pillars = [
         image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=600&fit=crop",
         readTime: 10,
         color: "neon-magenta",
+        link: "/guides/psychology-control"
     },
 ]
 
@@ -106,8 +109,8 @@ export function PillarCards({ stats }: PillarCardsProps) {
                                 {/* Footer */}
                                 <CardFooter>
                                     <Button variant="ghost" className="w-full group-hover:text-neon-cyan" asChild>
-                                        <Link href={`/category/${pillar.id}`}>
-                                            Read More →
+                                        <Link href={pillar.link}>
+                                            Start Masterclass →
                                         </Link>
                                     </Button>
                                 </CardFooter>
